@@ -1,0 +1,50 @@
+[
+   {
+      "pk ":"1",
+      "model":"products.category",
+      "fields":{
+         "name":"nintendo",
+         "friendly_name":"Nintendo"
+      }
+   },
+   {
+      "pk ":"2",
+      "model":"products.category",
+      "fields":{
+         "name":"sony ",
+         "friendly_name":"Sony"
+      }
+   },
+   {
+      "pk ":"3",
+      "model":"products.category",
+      "fields":{
+         "name":"microsoft",
+         "friendly_name":"Microsoft"
+      }
+   },
+   {
+      "pk ":"4",
+      "model":"products.category",
+      "fields":{
+         "name":"sega",
+         "friendly_name":"Sega"
+      }
+   },
+   {
+      "pk ":"5",
+      "model":"products.category",
+      "fields":{
+         "name":"atari",
+         "friendly_name":"Atari"
+      }
+   },
+   {
+      "pk ":"6",
+      "model":"products.category",
+      "fields":{
+         "name":"bandai",
+         "friendly_name":"Bandai"
+      }
+   }
+]
