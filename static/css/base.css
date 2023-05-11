@@ -3,6 +3,7 @@ html {
 }
 
 body {
+    background-color: #f0f0f0; /* add this line to set the background color to grey */
     background: url('/media/ConsolehqBackground.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
@@ -18,6 +19,9 @@ body {
     height: 1.5rem;
     width: 1.5rem;
 }
+.product-img {
+    height: 250px; /* Change the value to your desired height */
+  }
 
 .logo-font {
     text-transform: uppercase;
@@ -74,9 +78,11 @@ body {
 	top: 0;
 	left: 0;
 	position: fixed;
-	background: white;
+	background-color: #737373;
 	z-index: -1;
 }
+
+
 
 /* -------------------------------- Media Queries */
 
