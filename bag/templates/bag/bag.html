@@ -75,7 +75,8 @@
                                             </div>
                                         </form>
                                         <a class="update-link text-info"><small>Update Item</small></a>
-                                        <a class="remove-item text-danger float-right" id="remove_{{ item.iem_id }}"><small>Remove Item</small></a>
+                                        <a class="remove-item text-danger float-right" data-item_id="{{ item.item_id }}"><small>Remove Item</small></a>
+
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">£{{ item.product.price }}</p>
@@ -138,15 +139,19 @@
     })
 
     $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/bag/remove/${itemId}`;
-        var data = {'csrfmiddlewaretoken': csrfToken};
+    e.preventDefault();
+    var csrfToken = "{{ csrf_token }}";
+    var itemId = $(this).data('item_id');
+    var url = `/bag/remove/${itemId}/`;
+    var data = {'csrfmiddlewaretoken': csrfToken};
 
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-    })
+    $.post(url, data)
+        .done(function() {
+            location.reload();
+        })
+        .fail(function() {
+            console.log('Error occurred while removing the item from the bag.');
+        });
+})
 </script>
 {% endblock %}
