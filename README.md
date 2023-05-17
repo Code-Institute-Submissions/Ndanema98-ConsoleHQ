@@ -73,44 +73,44 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
    - This website has been tested using three different browsers (Google Chrome, Firefox, Safari) and I can confirm that it works. 
    - This website has been tested with all the standard screen sizes and I can confirm that it is responsive. 
 
-### Navigation Bar
-All Pages:
-TEST            | OUTCOME                          | PASS / FAIL  
---------------- | -------------------------------- | ---------------
+    ### Navigation Bar
+    All Pages:
+    TEST            | OUTCOME                          | PASS / FAIL  
+    --------------- | -------------------------------- | ---------------
 
 
-### Home Page
-TEST            | OUTCOME                          | PASS / FAIL  
---------------- | -------------------------------- | ---------------
+    ### Home Page
+    TEST            | OUTCOME                          | PASS / FAIL  
+    --------------- | -------------------------------- | ---------------
 
 
-### Add Anime page
-TEST            | OUTCOME                          | PASS / FAIL  
---------------- | -------------------------------- | ---------------
+    ### Add Anime page
+    TEST            | OUTCOME                          | PASS / FAIL  
+    --------------- | -------------------------------- | ---------------
 
 
-### Add Review page
-TEST            | OUTCOME                          | PASS / FAIL  
---------------- | -------------------------------- | ---------------
+    ### Add Review page
+    TEST            | OUTCOME                          | PASS / FAIL  
+    --------------- | -------------------------------- | ---------------
 
 
-### Edit Anime page
-TEST            | OUTCOME                          | PASS / FAIL  
---------------- | -------------------------------- | ---------------
+    ### Edit Anime page
+    TEST            | OUTCOME                          | PASS / FAIL  
+    --------------- | -------------------------------- | ---------------
 
-### Delete Anime page
-TEST            | OUTCOME                          | PASS / FAIL  
---------------- | -------------------------------- | ---------------
-
-
-### Register page
-TEST            | OUTCOME                          | PASS / FAIL  
---------------- | -------------------------------- | ---------------
+    ### Delete Anime page
+    TEST            | OUTCOME                          | PASS / FAIL  
+    --------------- | -------------------------------- | ---------------
 
 
-### Sign in Page
-TEST            | OUTCOME                          | PASS / FAIL  
---------------- | -------------------------------- | ---------------
+    ### Register page
+    TEST            | OUTCOME                          | PASS / FAIL  
+    --------------- | -------------------------------- | ---------------
+
+
+    ### Sign in Page
+    TEST            | OUTCOME                          | PASS / FAIL  
+    --------------- | -------------------------------- | ---------------
 
 
  - ## Validator 
