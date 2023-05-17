@@ -1,27 +1,55 @@
 # Milestone project 5
 # Console HQ
 
-[]() is a website designed for people to add descriptions, give their opinions and read reviews on anime that they have watched. 
+[]() is an ecommerce website designed for people to buy a wide variety of consoles and games.
 
+This website was targeted at people who want to easily purchase any game or console online. Users would be able to select from a wide range of merchandise from the catalogue avaliable on the products page. A search bar and navigation bar will be avaliable enabling users to filter through and locate a specific product. There will also be a shopping bag section, which would allow users to manage the products that they want to buy. A secure payment option would also be, allowing users to safely input their payment details. This will establish trust between the business and its customers. When customers feel confident that their payment information is protected, they are more likely to make purchases and share their sensitive data.
 
 This website was built using knowledge gained from HTML, CSS, JavaScript, Python and Django modules, for the purpose of completing my fifth Milestone Project for the Code Institute's full stack developer course. This website is easy to navigate and easy to read, with a clear goal and aim.
 
  # User Experience/User Interface (UX/UI)
 
  - ## User Stories
-   ### First Time User Goals
-   
-   
-   ### Logged-in User Goals
-   As a logged in user I want:
-   
+   ### Developer Goals
+   As the developer I want: 
+   - to be able to add a console or game to the list. So that I can add new consoles or games to the store.
+   - to be able to edit and update a console or game. So that I can change product prices, descriptions, images and other product criteria.
+   - to be able to delete a console or game from the list. So that I can remove consoles or games that are no longer for sale.
 
-   ### Developer's Goals.
-   As the developer I want:
    
- 
+   ### Shopper Goals
+   As a shopper I want:
+   - to view a list of consoles and games. So that I can select some to purchase.
+   - to view individual console and game product details. So that I can identify price, description and product rating.
+   - to be able to easily view the total of my purchases. So that I can avoid spending to much.
+   - to be able to sort the list of available consoles and games. So that I can easily identify the best rated and priced console.
+   - to be able to sort out a specific category of console. So that I can sort the consoles in a specific category by name.
+   - to be able to search for a console or game by name or description. So that I can find a specific console or game to purchase.
+   - to be able to easily see what I have searched for and a number of results. So that I can quickly decide whether the console I want is available.
+   -  to be able to easily select the quantity of consoles or games when purchasing them. So that I can ensure I do not accidently select the wrong quantity.
+   - to be able to view the consoles or games selected to be purchased in a bag. So that I can identify the total cost of the purchase and all items to be received.
+   - to be able to adjust the quantity of each individual console or game in my bag. So that I can easily make changes to my purchase.
+   - to be able to quickly identify deals and special offers. So that I can take advantage on special savings.
+   - to be able to sort through multiple categories of consoles simultaneously. So that I can find the best priced and rated products across the categories.
+   - to be able to easily enter payment information. So that I can check out with no hassle.
+   - to be able to feel like my personal and payment information is safe and secure. So that I can confidently provide the needed information to make a purchase.
+   - to be able view an order confirmation after checkout. So that I can verify that I have not made any mistakes. 
+   - to be able to receive an email confirmation after checking out. So that I can keep the confirmation of what I have purchased for my records.
+
+   ### Frequent site users Goals
+   As a frequent site user  I want:
+   - to be able to easily register for an account. So that I can have a personal account and be able to view the profile.
+   - to be able to easily log in or log out. So that I can access my personal account information.
+   - to be able to easily recover my password in case it is forgotten. So that I can recover access to my account.
+   - to be able to receive an email confirmation after registering. So that I can verify that my account registration was successful.
+   - to be able to have a personalised user profile. So that I can view my personal order history, order confirmations and payment information.
+   - to be able to sort between the categories of consoles and games. So that I can easily locate a game or a console depending on my needs.
+   
  - ## Design 
    ### Data Model
+   - 
+
+   ### Wireframes
    - 
 
    ### Colour Scheme
