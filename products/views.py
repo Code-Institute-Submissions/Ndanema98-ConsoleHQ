@@ -41,6 +41,21 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
+def products_by_category(request, category):
+    """A view to show products filtered by category"""
+
+    products = Product.objects.filter(categories__name=category)
+    categories = Category.objects.all()
+
+    context = {
+        'products': products,
+        'current_category': category,
+        'categories': categories,
+    }
+
+    return render(request, 'products/products_by_category.html', context)
+
+
 def product_detail(request, product_id):
     """A view to show the products details individually. """
 

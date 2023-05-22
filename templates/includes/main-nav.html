@@ -7,10 +7,9 @@
                 All Products
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item ">By Rating</a>
-                <a href="" class="dropdown-item ">By Category</a>
-                <a href="{% url 'products' %}" class="dropdown-item">All Consoles</a>
+                <a href="{% url 'products' %}?categories=Consoles" class="dropdown-item">Consoles</a>
+                <a href="{% url 'products' %}?categories=Games"class="dropdown-item ">Games</a>
+                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
 
@@ -19,13 +18,13 @@
                 Manufactors
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="manufactors-link">
-                <a href="{% url 'products' %}?category=nintendo" class="dropdown-item">Nintendo</a>
-                <a href="{% url 'products' %}?category=sony" class="dropdown-item">Sony</a>
-                <a href="{% url 'products' %}?category=microsoft" class="dropdown-item">Microsoft</a>
-                <a href="{% url 'products' %}?category=sega" class="dropdown-item">Sega</a>
-                <a href="{% url 'products' %}?category=atari" class="dropdown-item">Atari</a>
-                <a href="{% url 'products' %}?category=bandai" class="dropdown-item">Bandai</a>
-                <a href="{% url 'products' %}?category=nintendo, sony, microsoft, sega, atari, bandai" class="dropdown-item">All Manufactors</a>
+                <a href="{% url 'products' %}?categories=nintendo" class="dropdown-item">Nintendo</a>
+                <a href="{% url 'products' %}?categories=sony" class="dropdown-item">Sony</a>
+                <a href="{% url 'products' %}?categories=microsoft" class="dropdown-item">Microsoft</a>
+                <a href="{% url 'products' %}?categories=sega" class="dropdown-item">Sega</a>
+                <a href="{% url 'products' %}?categories=atari" class="dropdown-item">Atari</a>
+                <a href="{% url 'products' %}?categories=bandai" class="dropdown-item">Bandai</a>
+                <a href="{% url 'products' %}" class="dropdown-item">All Manufactors</a>
             </div>
         </li>
 
@@ -34,9 +33,9 @@
                 Special Deals
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specialdeals-link">
-                <a href="" class="dropdown-item">New Arrivals</a>
-                <a href="" class="dropdown-item">Deals</a>
-                <a href="" class="dropdown-item">All Specials</a>
+                <a href="{% url 'products' %}?categories=new_arrivals" class="dropdown-item">New Arrivals</a>
+                <a href="{% url 'products' %}?categories=deals" class="dropdown-item">Deals</a>
+                <a href="{% url 'products' %}?categories=new_arrivals, deals" class="dropdown-item">All Specials</a>
             </div>
         </li>
     </ul>
