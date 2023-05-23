@@ -80,6 +80,17 @@
                                     <span class="text-uppercase">Keep Shopping</span>
                                 </a>
                                 <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                                <hr>
+                                <h4>Reviews:</h4>
+                                {% for review in reviews %}
+                                    <div class="review border p-3 mb-3">
+                                        <h5>{{ review.name }}</h5>
+                                        <p>{{ review.content }}</p>
+                                        <p>Posted on: {{ review.date_posted }}</p>
+                                    </div>
+                                {% empty %}
+                                    <p>No reviews available.</p>
+                                {% endfor %}
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>

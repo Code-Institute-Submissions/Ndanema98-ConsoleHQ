@@ -41,6 +41,7 @@ class Review(models.Model):
     )
     content = models.TextField()
     date_posted = models.DateField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'Review for {self.post.title}'
+        return f'Review for {self.product.name}'

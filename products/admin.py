@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, Review
+from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
 
@@ -21,6 +22,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     display_categories.short_description = 'Categories'
 
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'friendly_name',
@@ -30,3 +32,17 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
+
+
+@admin.register(Review)
+class ReviewAdmin(SummernoteModelAdmin):
+
+    list_display = (
+        'name', 'content', 'product', 'date_posted', 'approved', 'author')
+    list_filter = ('approved', 'date_posted')
+    search_fields = ['name', 'email', 'content']
+    summernote_fields = ('content')
+    actions = ['approve_reviews']
+
+    def approve_reviews(self, request, queryset):
+        queryset.update(approved=True)
