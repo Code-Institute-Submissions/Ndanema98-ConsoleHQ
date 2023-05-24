@@ -17,10 +17,13 @@ def all_products(request):
     categories = None
 
     if request.GET:
-        if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
+        if 'categories' in request.GET:
+            categories = request.GET['categories'].split(',')
+            print(categories)
+            products = products.filter(categories__name__in=categories)
+            print(products)
             categories = Category.objects.filter(name__in=categories)
+            print(categories)
 
         if 'q' in request.GET:
             query = request.GET['q']
