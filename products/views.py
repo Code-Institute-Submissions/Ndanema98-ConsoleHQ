@@ -32,9 +32,10 @@ def all_products(request):
             products = products.filter(queries)
 
     discounted_prices = {}
-    for category in categories:
-        category_products = products.filter(category=category)
-        discounted_prices[category] = [product.discounted_price for product in category_products]
+    if categories:
+        for category in categories:
+            category_products = products.filter(category=category)
+            discounted_prices[category] = [product.discounted_price for product in category_products]
 
     context = {
         'products': products,
@@ -152,8 +153,8 @@ def create_review(request, product_id):
         if reviewform.is_valid():
             review = reviewform.save(commit=False)
             review.author = request.user
-            review.post = post
+            review.post = product
             review.save()
-            return redirect('products:review', product_id=product_id)
+            return redirect('products:product_detail', product_id=product_id)
     return render(
         request, 'review_form.html', {'reviewform': reviewform, 'product': product})

@@ -1,11 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Add Review for "{{ product.name }}"</h2>
+<hr>
+<hr>
+<hr>
+ <hr>
+ <hr>
+ <hr>
+<hr>
+<hr>
+ <hr>
+ <hr>
   <form method="POST">
     {% csrf_token %}
     {{ reviewform.as_p }}
     <input type="hidden" name="product_id" value="{{ product.id }}">
     <button type="submit">Save</button>
   </form>
+  <h2>Add Review for "{{ product.name }}"</h2>
 {% endblock %} 
