@@ -10,7 +10,7 @@ from .forms import ProductForm, ReviewForm
 
 
 def all_products(request):
-    """A view to show and sort all products and search queries. """
+    """A view to show and sort all products and search queries."""
 
     products = Product.objects.all()
     query = None
@@ -18,12 +18,9 @@ def all_products(request):
 
     if request.GET:
         if 'categories' in request.GET:
-            categories = request.GET['categories'].split(',')
-            print(categories)
-            products = products.filter(categories__name__in=categories)
-            print(products)
-            categories = Category.objects.filter(name__in=categories)
-            print(categories)
+            category_slugs = request.GET.getlist('categories')
+            categories = Category.objects.filter(slug__in=category_slugs)
+            products = products.filter(category__in=categories)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -31,15 +28,19 @@ def all_products(request):
                 messages.error(request, "You have not entered anything!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(
-                description__icontains=query)
+            queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
+
+    discounted_prices = {}
+    for category in categories:
+        category_products = products.filter(category=category)
+        discounted_prices[category] = [product.discounted_price for product in category_products]
 
     context = {
         'products': products,
         'search_term': query,
         'current_categories': categories,
-
+        'discounted_prices': discounted_prices,
     }
 
     return render(request, 'products/products.html', context)

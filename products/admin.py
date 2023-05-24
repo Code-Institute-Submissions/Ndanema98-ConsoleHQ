@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, Review
+from .models import Product, Category, Review, Deals
 from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
@@ -30,10 +30,6 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Product, ProductAdmin)
-admin.site.register(Category, CategoryAdmin)
-
-
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
 
@@ -46,3 +42,12 @@ class ReviewAdmin(SummernoteModelAdmin):
 
     def approve_reviews(self, request, queryset):
         queryset.update(approved=True)
+
+
+@admin.register(Deals)
+class DealsAdmin(admin.ModelAdmin):
+    list_display = ('category', 'discount_percentage')
+
+
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Category, CategoryAdmin)

@@ -45,3 +45,11 @@ class Review(models.Model):
 
     def __str__(self):
         return f'Review for {self.product.name}'
+
+
+class Deals(models.Model):
+    category = models.OneToOneField(Category, on_delete=models.CASCADE, primary_key=True)
+    discount_percentage = models.DecimalField(max_digits=3, decimal_places=2)
+
+    def __str__(self):
+        return f"Deals for {self.category.name}"
