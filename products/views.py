@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
-from .models import Product, Category
+from .models import Product, Category, Deals
 from .forms import ProductForm, ReviewForm
 
 # Create your views here.
@@ -18,9 +18,12 @@ def all_products(request):
 
     if request.GET:
         if 'categories' in request.GET:
-            category_slugs = request.GET.getlist('categories')
-            categories = Category.objects.filter(slug__in=category_slugs)
-            products = products.filter(category__in=categories)
+            categories = request.GET['categories'].split(',')
+            print(categories)
+            products = products.filter(categories__name__in=categories)
+            print(products)
+            categories = Category.objects.filter(name__in=categories)
+            print(categories)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -34,8 +37,13 @@ def all_products(request):
     discounted_prices = {}
     if categories:
         for category in categories:
-            category_products = products.filter(category=category)
-            discounted_prices[category] = [product.discounted_price for product in category_products]
+            category_products = products.filter(categories=category)
+            deals = Deals.objects.filter(category=category).first()
+            if deals:
+                discount_percentage = deals.discount_percentage
+                discounted_prices[category] = [product.price - (product.price * discount_percentage) for product in category_products]
+            else:
+                discounted_prices[category] = [product.price for product in category_products]
 
     context = {
         'products': products,
