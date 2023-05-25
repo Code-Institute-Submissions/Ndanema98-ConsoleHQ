@@ -161,8 +161,10 @@ def create_review(request, product_id):
         if reviewform.is_valid():
             review = reviewform.save(commit=False)
             review.author = request.user
-            review.post = product
+            review.product = product
+            print("PRODUCT: ", review.product)
             review.save()
-            return redirect('products:product_detail', product_id=product_id)
+            print("REVIEW: ", review)
+            return redirect('product_detail', product_id=product_id)
     return render(
         request, 'review_form.html', {'reviewform': reviewform, 'product': product})
