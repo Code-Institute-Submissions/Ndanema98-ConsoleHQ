@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
-from .models import Product, Category, Deals
+from .models import Product, Category, Deals, NewsletterSubscription, Coupon
 from .forms import ProductForm, ReviewForm
 
 # Create your views here.
@@ -168,3 +170,21 @@ def create_review(request, product_id):
             return redirect('product_detail', product_id=product_id)
     return render(
         request, 'review_form.html', {'reviewform': reviewform, 'product': product})
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            subscribed = request.POST.get('newsletter_signup', False)
+            newsletter_subscription = NewsletterSubscription.objects.create(
+                user=user, subscribed=subscribed)
+
+            if subscribed:
+                coupon = Coupon.create_coupon(user)
+
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/register.html', {'form': form})
