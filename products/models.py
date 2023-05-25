@@ -1,3 +1,6 @@
+import random
+import string
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -53,3 +56,34 @@ class Deals(models.Model):
 
     def __str__(self):
         return f"Deals for {self.category.name}"
+
+
+class NewsletterSubscription(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    subscribed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.user.username
+
+
+class Coupon(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    discount_code = models.CharField(max_length=20, unique=True)
+    used = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.discount_code
+
+    @staticmethod
+    def generate_discount_code():
+        code_length = 8
+        characters = string.ascii_uppercase + string.digits
+        discount_code = ''.join(random.choice(characters) for _ in range(code_length))
+        return discount_code
+
+    @classmethod
+    def create_coupon(cls, user):
+        discount_code = cls.generate_discount_code()
+        coupon = cls(user=user, discount_code=discount_code)
+        coupon.save()
+        return coupon
