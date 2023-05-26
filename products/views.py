@@ -174,19 +174,16 @@ def create_review(request, product_id):
         request, 'review_form.html', {'reviewform': reviewform, 'product': product})
 
 
-def register(request):
+def newsletter_signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            subscribed = request.POST.get('newsletter_signup', False)
-            newsletter_subscription = NewsletterSubscription.objects.create(
-                user=user, subscribed=subscribed)
+        email = request.POST.get('email')
+        subscription, created = NewsletterSubscription.objects.get_or_create(user=request.user)
+        subscription.subscribed = True
+        subscription.save()
+        
+        coupon = Coupon.create_coupon(request.user)
 
-            if subscribed:
-                coupon = Coupon.create_coupon(user)
-
-            return redirect('home')
+        return redirect('newsletter_success')
     else:
-        form = UserCreationForm()
-    return render(request, 'registration/register.html', {'form': form})
+        return render(request, 'newsletter_signup.html')
+    

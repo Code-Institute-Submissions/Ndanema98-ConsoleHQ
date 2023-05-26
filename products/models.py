@@ -31,14 +31,16 @@ class Product(models.Model):
         max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
-    discounted_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    discounted_price = models.DecimalField(
+        max_digits=6, decimal_places=2, null=True, blank=True)
 
     def __str__(self):
         return self.name
 
 
 class Review(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='reviews')
     name = models.CharField(max_length=80, default="Anonymous")
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="products_reviews",
@@ -52,7 +54,8 @@ class Review(models.Model):
 
 
 class Deals(models.Model):
-    category = models.OneToOneField(Category, on_delete=models.CASCADE, primary_key=True)
+    category = models.OneToOneField(
+        Category, on_delete=models.CASCADE, primary_key=True)
     discount_percentage = models.DecimalField(max_digits=3, decimal_places=2)
 
     def __str__(self):
@@ -79,7 +82,8 @@ class Coupon(models.Model):
     def generate_discount_code():
         code_length = 8
         characters = string.ascii_uppercase + string.digits
-        discount_code = ''.join(random.choice(characters) for _ in range(code_length))
+        discount_code = ''.join(
+            random.choice(characters) for _ in range(code_length))
         return discount_code
 
     @classmethod

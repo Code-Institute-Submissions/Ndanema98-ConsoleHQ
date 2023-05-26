@@ -113,17 +113,6 @@
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
 
-                    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
-                        {% csrf_token %}
-                    
-                        <div class="form-group">
-                            <label for="id_newsletter_signup">Sign up for newsletter:</label>
-                            <input type="checkbox" name="newsletter_signup" id="id_newsletter_signup">
-                        </div>
-                    
-                    </form>
-
-
                     <div class="submit-button text-right mt-5 mb-2">                    
 						<a href="{% url 'view_bag' %}" class="btn btn-outline-black rounded-0">
 							<span class="icon">
