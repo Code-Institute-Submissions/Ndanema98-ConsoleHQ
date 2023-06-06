@@ -35,20 +35,21 @@ def all_products(request):
 
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
-
-    current_deals = Deals.objects.all()
-    if len(current_deals) > 0:
+    if 'categories' in request.GET:
+        current_deals = Deals.objects.all().values("category")
+        if len(current_deals) > 0:
+            products = Product.objects.filter(categories__in=current_deals)
         # Iterate through products
-        for product in products:
-            for category in product.categories.all():
-                current_deal = current_deals.filter(category=category).first()
-                if current_deal:
-                    if product.discounted_price:
-                        product.discounted_price *= round((
-                            100 - current_deal.discount_percentage)/100, 2)
-                    else:
-                        product.discounted_price = round(product.price * (
-                            100 - current_deal.discount_percentage)/100, 2)
+        #for product in products:
+         #   for category in product.categories.all():
+          #      current_deal = current_deals.filter(category=category).first()
+           #     if current_deal:
+            #        if product.discounted_price:
+             #           product.discounted_price *= round((
+              #              100 - current_deal.discount_percentage)/100, 2)
+               #     else:
+                #        product.discounted_price = round(product.price * (
+                 #           100 - current_deal.discount_percentage)/100, 2)
         
     context = {
         'products': products,

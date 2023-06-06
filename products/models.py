@@ -37,6 +37,15 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def get_discounted_price(self):
+        for category in self.categories.all():
+            deal = Deals.objects.filter(category=category).first()
+            if deal:
+                discount = (
+                    int(deal.discount_percentage) / int(self.price)) * 100
+                return round(discount, 2)
+        return None
+
 
 class Review(models.Model):
     product = models.ForeignKey(

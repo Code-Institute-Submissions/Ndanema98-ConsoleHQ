@@ -42,7 +42,12 @@
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold text-black">£{{ product.price }}</p>
+                                            <p class="lead mb-0 text-left font-weight-bold text-black">
+                                                £{{ product.price }}  
+                                                {% if product.get_discounted_price %}
+                                               <span class="ml-2">Discounted Price: £{{product.get_discounted_price}}</span>
+                                                {% endif %}
+                                            </p>
                                             {% if product.discounted_price %}
                                             <p class="lead mb-0 text-left font-weight-bold text-black">£{{ product.discounted_price }}</p>
                                             {% endif %}

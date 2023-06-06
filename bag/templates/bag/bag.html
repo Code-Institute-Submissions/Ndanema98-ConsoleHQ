@@ -84,7 +84,13 @@
 
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                        <p class="my-0">
+                                            {% if item.product.get_discounted_price %}
+                                            £{{ item.product.get_discounted_price | calc_subtotal:item.quantity }}
+                                            {% else %}
+                                            £{{ item.product.price | calc_subtotal:item.quantity }}
+                                            {% endif %}
+                                        </p>
                                     </td>
                                 </tr>
                             {% endfor %}
