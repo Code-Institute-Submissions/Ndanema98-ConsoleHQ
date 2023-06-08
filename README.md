@@ -65,6 +65,9 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
    ### Colour Scheme
    - 
 
+  ## SEO 
+   ### Keywords
+
  # Features
  
  
