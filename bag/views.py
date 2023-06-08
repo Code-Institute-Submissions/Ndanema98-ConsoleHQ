@@ -10,12 +10,15 @@ from products.models import Product, NewsletterSubscription
 
 
 def view_bag(request):
+    if isinstance(request.user, AnonymousUser):
+        newsletter_subscription = None
+    else:
+        newsletter_subscription = NewsletterSubscription.objects.filter(user=request.user).first()
+
     context = {
-        'newsletter': NewsletterSubscription.objects.filter(
-            user=request.user).first()
+        'newsletter': newsletter_subscription
     }
     return render(request, 'bag/bag.html', context=context)
-
 
 def add_to_bag(request, item_id):
     """ Add a quantity of the specified product to the shopping bag """
@@ -78,11 +81,11 @@ def subscribe_to_newsletter(request):
     if object:
         if not object.subscribed:
             object.subscribed = True
-            message = "Subscribed to newsletter Successfully!"
+            message = "Unsubscribed to newsletter Successfully!"
             send_subscription_email(object.user)
 
         else:
             object.subscribed = False
-            message = "Unsubscribed to newsletter Successfully!"
+            message = "Subscribed to newsletter Successfully!"
         object.save()
     return JsonResponse({"message": message}, safe=False, status=200)

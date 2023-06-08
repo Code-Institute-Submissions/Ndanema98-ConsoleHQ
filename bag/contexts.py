@@ -34,13 +34,13 @@ def bag_contents(request):
 
     grand_total = delivery + total
 
-    news_letter_sub = NewsletterSubscription.objects.filter(
-        Q(user=request.user) & Q(
-            subscribed=True) & Q(coupon_used=False)).last()
-    if news_letter_sub:
-        discount_price = (int(grand_total) * 20)/100
-        grand_total = int(grand_total) - int(discount_price)
-    print("grand_total:::", news_letter_sub)
+    news_letter_sub = None
+    if not isinstance(request.user, AnonymousUser):
+        news_letter_sub = NewsletterSubscription.objects.filter(
+            Q(user=request.user) & Q(subscribed=True) & Q(coupon_used=False)).last()
+        if news_letter_sub:
+            discount_price = (int(grand_total) * 20) / 100
+            grand_total = int(grand_total) - int(discount_price)
 
     context = {
         'bag_items': bag_items,

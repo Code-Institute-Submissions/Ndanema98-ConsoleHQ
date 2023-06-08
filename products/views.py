@@ -36,6 +36,8 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
+    current_deals = []
+    
     if 'categories' in request.GET:
         current_deals = Deals.objects.all().values("category")
     if len(current_deals) > 0:
