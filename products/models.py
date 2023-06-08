@@ -41,9 +41,8 @@ class Product(models.Model):
         for category in self.categories.all():
             deal = Deals.objects.filter(category=category).first()
             if deal:
-                discount = (
-                    int(deal.discount_percentage) / int(self.price)) * 100
-                return round(discount, 2)
+                discount = (100 - deal.discount_percentage) / 100
+                return round(discount * self.price, 2)
         return None
 
 
