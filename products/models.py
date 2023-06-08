@@ -74,6 +74,7 @@ class Deals(models.Model):
 class NewsletterSubscription(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     subscribed = models.BooleanField(default=False)
+    coupon_used = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
@@ -82,6 +83,7 @@ class NewsletterSubscription(models.Model):
 class Coupon(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     discount_code = models.CharField(max_length=20, unique=True)
+    discount_amount = models.CharField(max_length=20, default=0)
     used = models.BooleanField(default=False)
 
     def __str__(self):

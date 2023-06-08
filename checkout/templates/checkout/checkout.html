@@ -112,6 +112,18 @@
                         <!-- Pass the client secret to the view so payment intent id can be recieved -->
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
+                    <fieldset class="px-3">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Coupon Code</legend>
+
+                        <!-- Pass the client secret to the view so payment intent id can be recieved -->
+                        <input type="text" id="coupon">
+                        <button type="button" class="btn btn-sm btn-primary" id="validate_btn">
+                            Validate Coupon
+                        </button>
+                        <br>
+                        <span id="coupon_msg">
+                        </span>
+                    </fieldset>
 
                     <div class="submit-button text-right mt-5 mb-2">                    
 						<a href="{% url 'view_bag' %}" class="btn btn-outline-black rounded-0">
@@ -151,4 +163,26 @@
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+    <script>
+        var validate_btn = document.getElementById("validate_btn")
+        validate_btn.addEventListener("click", () => {
+        var coupon_input = document.getElementById("coupon")
+        console.log("done")
+        $.ajax({
+            url: `/checkout/coupon_validation/?coupon=${coupon_input.value}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                // Handle the successful response
+                console.log(response);
+                var msg = document.getElementById("coupon_msg")
+                msg.innerHTML = response.message
+            },
+            error: function(error) {
+                // Handle the error
+                console.log(error);
+            }
+        });
+    })
+    </script>
 {% endblock %}

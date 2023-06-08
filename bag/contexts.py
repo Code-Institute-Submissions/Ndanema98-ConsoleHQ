@@ -1,11 +1,12 @@
 from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
-from products.models import Product
+from products.models import Product, NewsletterSubscription
+from django.db.models import Q
+from django.contrib.auth.models import AnonymousUser
 
 
 def bag_contents(request):
-
     bag_items = []
     total = 0
     product_count = 0
@@ -32,6 +33,14 @@ def bag_contents(request):
         free_delivery_delta = 0
 
     grand_total = delivery + total
+
+    news_letter_sub = NewsletterSubscription.objects.filter(
+        Q(user=request.user) & Q(
+            subscribed=True) & Q(coupon_used=False)).last()
+    if news_letter_sub:
+        discount_price = (int(grand_total) * 20)/100
+        grand_total = int(grand_total) - int(discount_price)
+    print("grand_total:::", news_letter_sub)
 
     context = {
         'bag_items': bag_items,

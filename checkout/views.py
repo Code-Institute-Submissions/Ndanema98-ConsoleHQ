@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.http import JsonResponse
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from products.models import Product
+from products.models import Product, Coupon, NewsletterSubscription
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from bag.contexts import bag_contents
@@ -17,6 +18,7 @@ import json
 @require_POST
 def cache_checkout_data(request):
     try:
+        print("request.POST:", request.POST)
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
@@ -32,12 +34,16 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    print("request.POST checkoout:", request.POST)
+
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
+        print("IN POST")
         bag = request.session.get('bag', {})
-
+        current_bag = bag_contents(request)
+        grand_total = current_bag['grand_total']
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -48,12 +54,15 @@ def checkout(request):
             'street_address1': request.POST['street_address1'],
             'street_address2': request.POST['street_address2'],
             'county': request.POST['county'],
+            'grand_total': grand_total,
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
+            print("FORM DATA:::", form_data)
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
+            order.grand_total = grand_total
             order.original_bag = json.dumps(bag)
             order.save()
             for item_id, item_data in bag.items():
@@ -73,15 +82,19 @@ def checkout(request):
                         "One of the products in your bag wasn't found in our database. "
                         "Please call us for assistance!")
                     )
-                    order.delete()
-                    return redirect(reverse('view_bag'))
+                order.delete()
+                return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            news_sub = NewsletterSubscription.objects.filter(user=request.user).first()
+            if news_sub:
+                news_sub.coupon_used = True
+                news_sub.save()
+            return redirect(
+                reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
-     
+                    Please double check your information.')
     else:
         bag = request.session.get('bag', {})
         if not bag:
@@ -170,3 +183,17 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def coupon_validation(request):
+    print("POST :", request.GET)
+    code = request.GET.get("coupon")
+    coupon_obj = Coupon.objects.filter(discount_code=code, used=False).first()
+    if coupon_obj:
+        coupon_obj.used = True
+        coupon_obj.save()
+        message = "Coupon is applied successfully!"
+    else:
+        message = "Coupon is not valid!"
+    return JsonResponse({"message": message}, safe=False, status=200)
+

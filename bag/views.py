@@ -1,15 +1,20 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.models import AnonymousUser
 
-from products.models import Product
+from django.http import JsonResponse
+from .utils import send_subscription_email
+from products.models import Product, NewsletterSubscription
 
 # Create your views here.
 
 
 def view_bag(request):
-    """ A view that renders the bag contents page """
-
-    return render(request, 'bag/bag.html')
+    context = {
+        'newsletter': NewsletterSubscription.objects.filter(
+            user=request.user).first()
+    }
+    return render(request, 'bag/bag.html', context=context)
 
 
 def add_to_bag(request, item_id):
@@ -66,6 +71,18 @@ def delete_item_bag(request, item_id):
         return HttpResponse(status=500)
 
 
+def subscribe_to_newsletter(request):
+    object, created = NewsletterSubscription.objects.get_or_create(
+        user=request.user)
+    checkbox = request.GET.get("newsletter")
+    if object:
+        if not object.subscribed:
+            object.subscribed = True
+            message = "Subscribed to newsletter Successfully!"
+            send_subscription_email(object.user)
 
-    
-    
+        else:
+            object.subscribed = False
+            message = "Unsubscribed to newsletter Successfully!"
+        object.save()
+    return JsonResponse({"message": message}, safe=False, status=200)
