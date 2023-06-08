@@ -40,7 +40,6 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
-        print("IN POST")
         bag = request.session.get('bag', {})
         current_bag = bag_contents(request)
         grand_total = current_bag['grand_total']
@@ -58,7 +57,6 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            print("FORM DATA:::", form_data)
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
@@ -82,8 +80,8 @@ def checkout(request):
                         "One of the products in your bag wasn't found in our database. "
                         "Please call us for assistance!")
                     )
-                order.delete()
-                return redirect(reverse('view_bag'))
+                    order.delete()
+                    return redirect(reverse('view_bag'))
 
             request.session['save_info'] = 'save-info' in request.POST
             news_sub = NewsletterSubscription.objects.filter(user=request.user).first()
