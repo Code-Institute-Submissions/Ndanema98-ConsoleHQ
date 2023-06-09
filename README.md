@@ -80,7 +80,7 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
     
  # Testing 
  - ## Automated 
-  - I have created some python files which automatically test my models.py, my forms.py and my views.py. 
+  - I have created some python files which automatically test my models.py, my forms.py, my views.py, my contexts.py and my utils.py in my different applications. 
 
  - ## Manual 
    - This website has been tested using three different browsers (Google Chrome, Firefox, Safari) and I can confirm that it works. 
