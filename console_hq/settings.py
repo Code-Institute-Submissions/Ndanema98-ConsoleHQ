@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['consolehq.herokuapp.com', 'localhost', '8000-ndanema98-consolehq-s9a9suessnw.ws-eu98.gitpod.io']
+ALLOWED_HOSTS = ['consolehq.herokuapp.com', 'localhost', '8000-ndanema98-consolehq-hfwe0vpzz42.ws-us99.gitpod.io']
 
 
 # Application definition
@@ -125,6 +125,7 @@ if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
+    print('elephantsql')
 else:
     DATABASES = {
         'default': {
