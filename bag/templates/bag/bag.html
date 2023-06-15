@@ -99,8 +99,6 @@
                                     <h6><strong>Bag Total: £{{ total|floatformat:2 }}</strong></h6>
                                     <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
                                     <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
-                                    <h6> <input type="checkbox" id="news_letter" {% if newsletter %} checked {% endif %}> Subscribe to our newsletter and recieve a coupon which provides you with 20% off: </h6>
-                                    <p id="subscription_message"></p>
                                     {% if free_delivery_delta > 0 %}
                                         <p class="mb-1 text-danger">
                                             You could get free delivery by spending just <strong>£{{ free_delivery_delta }}</strong> more!
@@ -165,36 +163,6 @@
         .fail(function() {
             console.log('Error occurred while removing the item from the bag.');
         });
-})
-var news_letter = document.getElementById("news_letter")
-console.log("news_letter:",news_letter)
-news_letter.addEventListener('click',() => {
-
-    if (news_letter.checked) {
-        console.log('Checkbox is checked');
-        var checked = true
-
-    } else {
-        console.log('Checkbox is not checked');
-        var checked = false
-
-    }
-    $.ajax({
-        url: `/bag/subscribe_to_newsletter/?newsletter=${checked}`,
-        type: 'GET',
-        dataType: 'json',
-        success: function(response) {
-            // Handle the successful response
-            console.log(response);
-            var message = document.getElementById("subscription_message")
-            message.innerHTML = response.message
-        },
-        error: function(error) {
-            // Handle the error
-            console.log(error);
-        }
-    });
-
 })
 </script>
 {% endblock %}

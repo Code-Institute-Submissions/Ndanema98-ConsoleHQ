@@ -153,6 +153,38 @@
     <script type="text/javascript">
         $('.toast').toast('show');
     </script>
+    <script type="text/javascript">
+        var news_letter = document.getElementById("news_letter")
+        console.log("news_letter:",news_letter)
+        news_letter.addEventListener('click',() => {
+
+    if (news_letter.checked) {
+        console.log('Checkbox is checked');
+        var checked = true
+
+    } else {
+        console.log('Checkbox is not checked');
+        var checked = false
+
+    }
+    $.ajax({
+        url: `/bag/subscribe_to_newsletter/?newsletter=${checked}`,
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            // Handle the successful response
+            console.log(response);
+            var message = document.getElementById("subscription_message")
+            message.innerHTML = response.message
+        },
+        error: function(error) {
+            // Handle the error
+            console.log(error);
+        }
+    });
+})
+    </script>
+
     {% endblock %}
 
   </body>
@@ -188,6 +220,9 @@
 	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
 	<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
 </div>
+<h6> 
+    <input type="checkbox" id="news_letter" {% if newsletter %} checked {% endif %}> Click here to recieve a coupon which provides you with 20% off: </h6>
+    <p id="subscription_message"></p>
 	<div id="mce-responses" class="clear foot">
 		<div class="response" id="mce-error-response" style="display:none"></div>
 		<div class="response" id="mce-success-response" style="display:none"></div>
@@ -196,8 +231,7 @@
         <div class="optionalParent">
             <div class="clear foot">
                 <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-                <p class="brandingLogo"><a href="http://eepurl.com/itzoQI" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
-            </div>
+            </div> 
         </div>
     </div>
 </form>
