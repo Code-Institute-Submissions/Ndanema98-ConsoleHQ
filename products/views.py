@@ -17,15 +17,18 @@ def all_products(request):
     products = Product.objects.all()
     query = None
     categories = None
+    deals_categories = []
 
     if request.GET:
         if 'categories' in request.GET:
             categories = request.GET['categories'].split(',')
-            print(categories)
-            products = products.filter(categories__name__in=categories)
-            print(products)
-            categories = Category.objects.filter(name__in=categories)
-            print(categories)
+            if 'deals' in categories:
+                deals_categories = Category.objects.filter(deals__isnull=False)
+                products = products.filter(categories__in=deals_categories)
+                categories = categories.remove('deals')
+            else:
+                products = products.filter(categories__name__in=categories)
+                categories = Category.objects.filter(name__in=categories)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -35,18 +38,12 @@ def all_products(request):
 
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
-
-    current_deals = []
-    
-    if 'categories' in request.GET:
-        current_deals = Deals.objects.all().values("category")
-    if len(current_deals) > 0:
-        products = Product.objects.filter(categories__in=current_deals)
         
     context = {
         'products': products,
         'search_term': query,
         'current_categories': categories,
+        'deals_categories': deals_categories,
     }
 
     return render(request, 'products/products.html', context)
