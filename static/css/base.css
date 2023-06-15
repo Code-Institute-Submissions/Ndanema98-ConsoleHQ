@@ -244,7 +244,14 @@ input[name='q']::placeholder {
     border-radius: 0;
     border-color: #dc3545;
 }
-
+/* Mailchimp */ 
+#mc_embed_signup{
+    background:#fff; 
+    clear:left; 
+    font:14px Helvetica,Arial,sans-serif;  
+    width:600px;
+    padding: 0;
+}
 /* Review Form */
 .review-form {
     max-width: 400px;
