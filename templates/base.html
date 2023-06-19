@@ -149,43 +149,6 @@
 
     {% endblock %}
 
-    {% block postloadjs %}
-    <script type="text/javascript">
-        $('.toast').toast('show');
-    </script>
-    <script type="text/javascript">
-        var news_letter = document.getElementById("news_letter")
-        console.log("news_letter:",news_letter)
-        news_letter.addEventListener('click',() => {
-
-    if (news_letter.checked) {
-        console.log('Checkbox is checked');
-        var checked = true
-
-    } else {
-        console.log('Checkbox is not checked');
-        var checked = false
-
-    }
-    $.ajax({
-        url: `/bag/subscribe_to_newsletter/?newsletter=${checked}`,
-        type: 'GET',
-        dataType: 'json',
-        success: function(response) {
-            // Handle the successful response
-            console.log(response);
-            var message = document.getElementById("subscription_message")
-            message.innerHTML = response.message
-        },
-        error: function(error) {
-            // Handle the error
-            console.log(error);
-        }
-    });
-})
-    </script>
-
-    {% endblock %}
 
   </body>
 <!-- Footer -->
@@ -208,6 +171,8 @@
             <div class="col-12 col-md-6">
             <h2>Subscribe!</h2>
             <p>Get exclusive offers and discount codes by subscribing to our monthly newsletter</p>
+            <input type="checkbox" id="news_letter" {% if newsletter %} checked {% endif %}> Click here to recieve a coupon which provides you with 20% off: </h6>
+            <p id="subscription_message"></p>
             <!-- Begin Mailchimp Signup Form -->
 <div id="mc_embed_signup">
     <form action="https://herokuapp.us21.list-manage.com/subscribe/post?u=1111a52a00edcf243be8989b7&amp;id=139dfb0cfb&amp;f_id=0016d7e6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -219,10 +184,8 @@
 </label>
 	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
 	<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
-</div>
+</div> 
 <h6> 
-    <input type="checkbox" id="news_letter" {% if newsletter %} checked {% endif %}> Click here to recieve a coupon which provides you with 20% off: </h6>
-    <p id="subscription_message"></p>
 	<div id="mce-responses" class="clear foot">
 		<div class="response" id="mce-error-response" style="display:none"></div>
 		<div class="response" id="mce-success-response" style="display:none"></div>
@@ -236,11 +199,50 @@
     </div>
 </form>
 </div>
+
 <!--End mc_embed_signup-->
             </div>
         </div>
         </section>
     </div>
+    {% block postloadjs %}
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
+    <script type="text/javascript">
+    var news_letter = document.getElementById("news_letter")
+    console.log("news_letter:",news_letter)
+    news_letter.addEventListener('change',() => {
+
+        if (news_letter.checked) {
+            console.log('Checkbox is checked');
+            var checked = true
+
+        } else {
+            console.log('Checkbox is not checked');
+            var checked = false
+
+        }
+        $.ajax({
+            url: `/bag/subscribe_to_newsletter/?newsletter=${checked}`,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                // Handle the successful response
+                console.log(response);
+                console.log('hi')
+                var message = document.getElementById("subscription_message")
+                message.innerHTML = response.message
+            },
+            error: function(error) {
+                // Handle the error
+                console.log(error);
+            }
+        });
+    })
+    </script>
+
+    {% endblock %}
     </footer>
 <!-- /.footer -->
 </html>

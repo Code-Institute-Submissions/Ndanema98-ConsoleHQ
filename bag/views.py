@@ -76,17 +76,17 @@ def delete_item_bag(request, item_id):
 
 
 def subscribe_to_newsletter(request):
-    object, created = NewsletterSubscription.objects.get_or_create(
-        user=request.user)
+    object, created = NewsletterSubscription.objects.get_or_create(user=request.user)
     checkbox = request.GET.get("newsletter")
-    if object:
+    if checkbox:
         if not object.subscribed:
             object.subscribed = True
-            message = "Unsubscribed to newsletter Successfully!"
+            message = "Subscribed to newsletter successfully!"
             send_subscription_email(object.user)
-
         else:
             object.subscribed = False
-            message = "Subscribed to newsletter Successfully!"
+            message = "Unsubscribed from newsletter successfully!"
         object.save()
-    return JsonResponse({"message": message}, safe=False, status=200)
+    else:
+        message = "Invalid request. Newsletter checkbox not found."
+    return JsonResponse({"message": message}, status=200)

@@ -41,7 +41,7 @@ def bag_contents(request):
         if news_letter_sub:
             discount_price = (int(grand_total) * 20) / 100
             grand_total = int(grand_total) - int(discount_price)
-
+ 
     context = {
         'bag_items': bag_items,
         'total': total,
