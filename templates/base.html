@@ -2,7 +2,8 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
 
     {% block meta %}
     <!-- Required meta tags -->
@@ -16,28 +17,34 @@
 
     {% block corecss %}
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital@1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link href="//cdn-images.mailchimp.com/embedcode/classic-071822.css" rel="stylesheet" type="text/css">
-   
+
     {% endblock %}
 
     {% block extra_css %}
-    {% endblock %} 
+    {% endblock %}
 
 
     {% block corejs %}
-    <script>console.log("scripts loading")</script>
+    <script>
+        console.log("scripts loading")
+    </script>
     <script src="https://kit.fontawesome.com/003059f006.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
+    </script>
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
-    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
     {% endblock %}
 
 
@@ -45,204 +52,255 @@
     {% endblock %}
 
     <title>ConsoleHQ {% block extra_title %}{% endblock %}</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <header class="container-fluid fixed-top">
-      <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
-          <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-              <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                  <h2 class="logo-font text-black my-0"><strong>Console</strong>HQ</h2>
-              </a>
-          </div>
-          <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-              <form method="GET" action="{% url 'products' %}">
-                  <div class="input-group w-100">
-                      <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search">
-                      <div class="input-group-append">
-                          <button class="form-control btn btn-black border border-black rounded-0" type="submit">
-                              <span class="icon">
-                                  <i class="fas fa-search"></i>
-                              </span>
-                          </button>
-                      </div>
-                  </div>
-              </form>
-          </div>
-          <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-              <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-                  <li class="list-inline-item dropdown">
-                      <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <div class="text-center">
-                              <div><i class="fas fa-user fa-lg"></i></div>
-                              <p class="my-0">My Account</p>
-                          </div>
-                      </a>
-                      <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                          {% if request.user.is_authenticated %}
-                              {% if request.user.is_superuser %}
-                                  <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
-                              {% endif %}
-                              <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                              <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                          {% else %}
-                              <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                              <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                          {% endif %}
-                      </div>
-                  </li>
-                  <li class="list-inline-item">
-                      <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
-                          <div class="text-center">
-                              <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                              <p class="my-0">
-                                  {% if grand_total %}
-                                      £{{ grand_total|floatformat:2 }}
-                                  {% else %}
-                                      £0.00
-                                  {% endif %}
-                              </p>
-                          </div>
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-      <div class="row bg-white">
-        <nav class="navbar navbar-expand-lg navbar-light w-100">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            {% include 'includes/mobile-top-header.html' %}
-            {% include 'includes/main-nav.html' %}
-        </nav>
-      </div>
-      <div id="delivery-banner" class="row text-center">
-        <div class="col bg-black text-white">
-            <h4 class="logo-font my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>
+        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+                <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                    <h2 class="logo-font text-black my-0"><strong>Console</strong>HQ</h2>
+                </a>
+            </div>
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                <form method="GET" action="{% url 'products' %}">
+                    <div class="input-group w-100">
+                        <input class="form-control border border-black rounded-0" type="text" name="q"
+                            placeholder="Search">
+                        <div class="input-group-append">
+                            <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                    <li class="list-inline-item dropdown">
+                        <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <div class="text-center">
+                                <div><i class="fas fa-user fa-lg"></i></div>
+                                <p class="my-0">My Account</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                            {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
+                            <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                            {% endif %}
+                            <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                            {% else %}
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                            {% endif %}
+                        </div>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
+                            href="{% url 'view_bag' %}">
+                            <div class="text-center">
+                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                                <p class="my-0">
+                                    {% if grand_total %}
+                                    £{{ grand_total|floatformat:2 }}
+                                    {% else %}
+                                    £0.00
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-  </header>
-  
+        <div class="row bg-white">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav"
+                    aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                {% include 'includes/mobile-top-header.html' %}
+                {% include 'includes/main-nav.html' %}
+            </nav>
+        </div>
+        <div id="delivery-banner" class="row text-center">
+            <div class="col bg-black text-white">
+                <h4 class="logo-font my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h4>
+            </div>
+        </div>
+    </header>
+
 
     {% if messages %}
     <div class="message-container">
         {% for message in messages %}
-            {% with message.level as level %}
-                {% if level == 40 %}
-                    {% include 'includes/toasts/toast_error.html' %}
-                {% elif level == 30 %}
-                    {% include 'includes/toasts/toast_warning.html' %}
-                {% elif level == 25 %}
-                    {% include 'includes/toasts/toast_success.html' %}
-                {% else %}
-                    {% include 'includes/toasts/toast_info.html' %}
-                {% endif %}
-            {% endwith %}
+        {% with message.level as level %}
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
         {% endfor %}
     </div>
     {% endif %}
 
     {% block page_header %}
     {% endblock %}
- 
+
     {% block content %}
 
     {% endblock %}
 
 
-  </body>
+</body>
 <!-- Footer -->
-    <footer class="container-wrapper">
-        <br>
-        <div class="container quotes-container content-container">
+<footer class="container-wrapper">
+    <br>
+    <div class="container quotes-container content-container">
         <section class="footer">
             <div class="row">
-            <div class="col-12 page-header mb-4">
-                <h2 class="text-uppercase">Stay in touch:</h2>
-                <hr class="block-divider block-divider--short">
+                <div class="col-12 page-header mb-4">
+                    <h2 class="text-uppercase">Stay in touch:</h2>
+                    <hr class="block-divider block-divider--short">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-6">
-            <h3>Social</h3>
-            <p>Keep up to date with all our latest offers</p>
-            <a href="https://www.facebook.com/profile.php?id=100093556725386" target="_blank"><i class="fab fa-facebook-square"></i> Follow us on Facebook!</a>
-            </div>
-            <div class="col-12 col-md-6">
-            <h2>Subscribe!</h2>
-            <p>Get exclusive offers and discount codes by subscribing to our monthly newsletter</p>
-            <input type="checkbox" id="news_letter" {% if newsletter %} checked {% endif %}> Click here to recieve a coupon which provides you with 20% off: </h6>
-            <p id="subscription_message"></p>
-            <!-- Begin Mailchimp Signup Form -->
-<div id="mc_embed_signup">
-    <form action="https://herokuapp.us21.list-manage.com/subscribe/post?u=1111a52a00edcf243be8989b7&amp;id=139dfb0cfb&amp;f_id=0016d7e6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-        <div id="mc_embed_signup_scroll">
-        <h2>Subscribe</h2>
-        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-<div class="mc-field-group">
-	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
-</label>
-	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
-	<span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
-</div> 
-<h6> 
-	<div id="mce-responses" class="clear foot">
-		<div class="response" id="mce-error-response" style="display:none"></div>
-		<div class="response" id="mce-success-response" style="display:none"></div>
-	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_1111a52a00edcf243be8989b7_139dfb0cfb" tabindex="-1" value=""></div>
-        <div class="optionalParent">
-            <div class="clear foot">
-                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-            </div> 
-        </div>
-    </div>
-</form>
-</div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h3>Social</h3>
+                    <p>Keep up to date with all our latest offers</p>
+                    <a href="https://www.facebook.com/profile.php?id=100093556725386" target="_blank"><i
+                            class="fab fa-facebook-square"></i> Follow us on Facebook!</a>
+                </div>
+                <div class="col-12 col-md-6">
+                    <h2>Subscribe!</h2>
+                    <p id="subscription_message"></p>
 
-<!--End mc_embed_signup-->
+
+                    <div id="mc_embed_shell">
+                        <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet"
+                            type="text/css">
+                        <style type="text/css">
+                            #mc_embed_signup {
+                                background: #000;
+                                false;
+                                clear: left;
+                                font: 14px Helvetica, Arial, sans-serif;
+                                width: 600px;
+                            }
+
+                            /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+                             We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+                        </style>
+                        <div id="mc_embed_signup">
+                            <form
+                                action="https://herokuapp.us21.list-manage.com/subscribe/post?u=1111a52a00edcf243be8989b7&amp;id=139dfb0cfb&amp;f_id=0016d7e6f0"
+                                method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                                class="validate" target="_blank">
+                                <div id="mc_embed_signup_scroll">
+                                    <h2>Subscribe</h2>
+                                    <div class="indicates-required"><span class="asterisk">*</span> indicates required
+                                    </div>
+                                    <!-- Coupon Checkbox -->
+
+                                    {% if user.is_authenticated %}
+                                    <div>
+                                        <p>Get exclusive offers and discount codes by subscribing to our monthly
+                                            newsletter</p>
+                                    </div>
+                                    <div>Click here to recieve a coupon which provides you with 20% off: <input
+                                            type="checkbox" id="news_letter" {% if newsletter %} checked {% endif %}>
+                                    </div>
+
+                                    {% else %}
+
+                                    <div>
+                                        <p>Log in first to obtain a first-time coupon!</p>
+                                    </div>
+
+                                    {% endif %}
+
+                                    <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span
+                                                class="asterisk">*</span></label><input type="email" name="EMAIL"
+                                            class="required email" id="mce-EMAIL" required="" value=""></div>
+
+                                    <div id="mce-responses" class="clear foot">
+                                        <div class="response" id="mce-error-response" style="display: none;"></div>
+                                        <div class="response" id="mce-success-response" style="display: none;"></div>
+                                    </div>
+                                    <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                        /* real people should not fill this in and expect good things - do not remove
+                                        this or risk form bot signups */
+                                        <input type="text" name="b_1111a52a00edcf243be8989b7_139dfb0cfb" tabindex="-1"
+                                            value="">
+                                    </div>
+                                    <div class="optionalParent">
+                                        <div class="clear foot">
+                                            <input type="submit" name="subscribe" id="mc-embedded-subscribe"
+                                                class="button" value="Subscribe">
+                                            <p class="brandingLogo" style="margin: 0px auto;"><a
+                                                    href="http://eepurl.com/itzoQI"
+                                                    title="Mailchimp - email marketing made easy and fun"><img
+                                                        src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"
+                                                        alt="referral badge"></a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <script type="text/javascript"
+                            src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+                    </div>
+                    <!--End mc_embed_signup-->
+                </div>
             </div>
-        </div>
         </section>
     </div>
-    {% block postloadjs %}
-    <script type="text/javascript">
-        $('.toast').toast('show');
-    </script>
-    <script type="text/javascript">
-    var news_letter = document.getElementById("news_letter")
-    console.log("news_letter:",news_letter)
-    news_letter.addEventListener('change',() => {
+</footer>
 
+
+{% block postloadjs %}
+<script type="text/javascript">
+    $('.toast').toast('show');
+</script>
+<script type="text/javascript">
+    var news_letter = document.getElementById("news_letter")
+    var subscribe_form = document.getElementById("mc-embedded-subscribe-form")
+    var email = document.getElementById("mce-EMAIL").value
+    console.log("news_letter:", news_letter)
+    subscribe_form.addEventListener('submit', () => {
         if (news_letter.checked) {
             console.log('Checkbox is checked');
             var checked = true
-
-        } else {
-            console.log('Checkbox is not checked');
-            var checked = false
-
+            $.ajax({
+                url: `/bag/subscribe_to_newsletter/?newsletter=${checked}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    // Handle the successful response
+                    console.log(response);
+                    console.log('hi')
+                    var message = document.getElementById("subscription_message")
+                    message.innerHTML = response.message
+                },
+                error: function (error) {
+                    // Handle the error
+                    console.log(error);
+                }
+            });
         }
-        $.ajax({
-            url: `/bag/subscribe_to_newsletter/?newsletter=${checked}`,
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                // Handle the successful response
-                console.log(response);
-                console.log('hi')
-                var message = document.getElementById("subscription_message")
-                message.innerHTML = response.message
-            },
-            error: function(error) {
-                // Handle the error
-                console.log(error);
-            }
-        });
     })
-    </script>
+</script>
 
-    {% endblock %}
-    </footer>
-<!-- /.footer -->
+{% endblock %}
+
 </html>

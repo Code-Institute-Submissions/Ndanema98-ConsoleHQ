@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['consolehq.herokuapp.com', 'localhost', '8000-ndanema98-consolehq-3ppc8hung63.ws-eu100.gitpod.io']
+ALLOWED_HOSTS = ['consolehq.herokuapp.com', 'localhost', '8000-ndanema98-consolehq-3ppc8hung63.ws-eu100.gitpod.io', '8000-ndanema98-consolehq-c9g6xxt8s9d.ws-eu100.gitpod.io']
 
 
 # Application definition
@@ -219,9 +219,6 @@ else:
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
-
-
-
 
 
 # Default primary key field type

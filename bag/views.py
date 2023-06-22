@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import AnonymousUser
 
 from django.http import JsonResponse
-from .utils import send_subscription_email
+from .utils import send_subscription_email, generate_coupon_code
 from products.models import Product, NewsletterSubscription
 
 # Create your views here.
@@ -76,17 +76,22 @@ def delete_item_bag(request, item_id):
 
 
 def subscribe_to_newsletter(request):
-    object, created = NewsletterSubscription.objects.get_or_create(user=request.user)
-    checkbox = request.GET.get("newsletter")
-    if checkbox:
-        if not object.subscribed:
-            object.subscribed = True
-            message = "Subscribed to newsletter successfully!"
-            send_subscription_email(object.user)
+    if request.user.is_authenticated:
+
+        object, created = NewsletterSubscription.objects.get_or_create(user=request.user)
+        checkbox = request.GET.get("newsletter")
+        email = request.GET.get("email")
+        if checkbox:
+            if not object.subscribed:
+                object.subscribed = True
+                message = "Subscribed to newsletter successfully!"
+                send_subscription_email(object.user)
+            else:
+                object.subscribed = False
+                message = "Unsubscribed from newsletter successfully!"
+            object.save()
         else:
-            object.subscribed = False
-            message = "Unsubscribed from newsletter successfully!"
-        object.save()
-    else:
-        message = "Invalid request. Newsletter checkbox not found."
-    return JsonResponse({"message": message}, status=200)
+            message = "Invalid request. Newsletter checkbox not found."
+        return JsonResponse({"message": message}, status=200)
+
+    return JsonResponse({"message": "User Not Validated"})
