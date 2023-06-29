@@ -60,7 +60,9 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
    - Lastly, the UserProfile model maintains user-specific information such as default delivery details. It is linked to the built-in User model through a one-to-one relationship and includes fields for phone number, street addresses, town/city, county, postcode, and country.
 
    ### Wireframes
-   - 
+   - ![A screenshot of my wireframe 1](/media/wireframe1.png)
+   - ![A screenshot of my wireframe 2](/media/wireframe2.png)
+   - ![A screenshot of my wireframe 3](/media/Wireframe3.png)
 
    ### Colour Scheme
    - 
@@ -69,6 +71,10 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
    ### Keywords
 
  # Features
+ - ## Responsive Website
+   ![A screenshot of my responsive design](/media/amiresponsive2.jpg)
+
+   - This website changes it's layout to best display the content depending on the screen size. This allows the user to use the website on various different devices. 
  
  
 
@@ -90,28 +96,47 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
     All Pages:
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
-
+    Home page | When clicking on the title "Console HQ" button on the nav bar, the browser redirects to the home page. | PASS
+    Search Bar | When a query is typed in and searched, the page will redirect to return anything the user searched for.  | PASS
+    Loging/ Log Out Pages | When clicking on the log in or log out button the page redirects to the log in page or logs the user out | PASS
+    Register Page | When clicking on the register button it redirects to the register page. | PASS
+    Shopping Bag | When clicking on the shopping bag button it redirects to the shopping bag page. | PASS
+    Filters | When clicking on any of the filter options it redirects to the relevant filtered page. | PASS
+    Foreground and background | Checked foreground and background information is clearly legible | PASS
+    Text | Checked the text is clearly legible against the background | PASS
 
     ### Home Page
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
+    Responsiveness | Checked elements for consistant scaleability | PASS
+    Accessibility | Checked the accessibility of the page using lighthouse | PASS
 
 
-    ### Add Anime page
+    ### View Products page 
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
 
+    ### View Shopping Bag page 
+    TEST            | OUTCOME                          | PASS / FAIL  
+    --------------- | -------------------------------- | ---------------
+
+    ### View Checkout page 
+    TEST            | OUTCOME                          | PASS / FAIL  
+    --------------- | -------------------------------- | ---------------
 
     ### Add Review page
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
+    Responsiveness | Checked elements for consistant scaleability | PASS
+    Save button | When clicking the Save button on the page, the form in inputted into the database and the browser redirects to the review page. | PASS
+    Add Review Form | Checked the form submits only when all required fields are filled out. | PASS
+    Accessibility | Checked the accessibility of the page using lighthouse| PASS
 
-
-    ### Edit Anime page
+    ### Edit Products page
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
 
-    ### Delete Anime page
+    ### Delete Products page
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
 
@@ -119,11 +144,22 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
     ### Register page
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
+    Media | All media assets are displayed properly, have no pixelation or stretched images and is responsive on all devices. | PASS
+    Responsiveness | Check every element on-page for consistent scalability in mobile, tablet and desktop view.| PASS
+    Accessibility | Checked the accessibility of the page using lighthouse| PASS
+    Register form | Checked the form submits only when all required fields are filled out. | PASS
+    Sign in link | Checked the sign-in link redirects to the sign-in page. | PASS
+
 
 
     ### Sign in Page
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
+    Media | All media assets are displayed properly, have no pixelation or stretched images and is responsive on all devices. | PASS
+    Responsiveness | Check every element on-page for consistent scalability in mobile, tablet and desktop view.| PASS
+    Accessibility | Checked the accessibility of the page using lighthouse| PASS
+    Sign in form | Checked the form submits only when all required fields are filled out. | PASS
+    Signup link | Checked the signup link redirects to the signup page. | PASS
 
 
  - ## Validator 
