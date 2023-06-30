@@ -1,7 +1,7 @@
 # Milestone project 5
 # Console HQ
 
-[]() is an ecommerce website designed for people to buy a wide variety of consoles and games.
+["Console HQ"](https://consolehq.herokuapp.com/) is an ecommerce website designed for people to buy a wide variety of consoles and games.
 
 This website was targeted at people who want to easily purchase any game or console online. Users would be able to select from a wide range of merchandise from the catalogue avaliable on the products page. A search bar and navigation bar will be avaliable enabling users to filter through and locate a specific product. There will also be a shopping bag section, which would allow users to manage the products that they want to buy. A secure payment option would also be, allowing users to safely input their payment details. This will establish trust between the business and its customers. When customers feel confident that their payment information is protected, they are more likely to make purchases and share their sensitive data. The ability to add reviews would also be avaliable to users as this will allow them to share their feedback and experiences with the products they have purchased. By providing a platform for customers to express their opinions, the business can gather valuable insights and improve its offerings based on customer feedback. This interactive feature encourages customer engagement and loyalty, as users feel their voices are heard and valued by the business.
 
@@ -15,6 +15,7 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
    - to be able to add a console or game to the list. So that I can add new consoles or games to the store.
    - to be able to edit and update a console or game. So that I can change product prices, descriptions, images and other product criteria.
    - to be able to delete a console or game from the list. So that I can remove consoles or games that are no longer for sale.
+   - to be able to add a discount on to any category of console or game on the list. So that I can encourage customers to purchase those items. 
 
    
    ### Shopper Goals
@@ -35,6 +36,8 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
    - to be able to feel like my personal and payment information is safe and secure. So that I can confidently provide the needed information to make a purchase.
    - to be able view an order confirmation after checkout. So that I can verify that I have not made any mistakes. 
    - to be able to receive an email confirmation after checking out. So that I can keep the confirmation of what I have purchased for my records.
+   - to be able to sign up to the newsletter and receive my one-time coupon so that I can gain more knowledge on the website and take advantage on special savings.
+
 
    ### Frequent site users Goals
    As a frequent site user  I want:
@@ -65,7 +68,18 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
    ![A screenshot of my wireframe 3](/media/Wireframe3.png)
 
    ### Colour Scheme
-   - 
+   - White Text:
+    Readability: White text on a dark or contrasting background is known for its high readability. It provides a sharp contrast, making it easier for users to read the content.
+    Clean and Minimalistic: White is associated with cleanliness, simplicity, and minimalism. It can give your website a modern and sophisticated look, allowing the content to take center stage without distractions.
+
+   - Gray Background:
+    Neutral and Versatile: Gray is a neutral color that works well with various design elements and color combinations. It provides a subtle backdrop, allowing other colors and content to stand out.
+    Balance and Calmness: Gray is often associated with stability, balance, and calmness. It can create a harmonious and soothing visual experience, particularly when combined with other colors.
+    Enhances Focus: A light gray background can help reduce eye strain and improve focus. It provides a comfortable reading environment, especially for longer periods of browsing.
+    
+   - Black Text:
+    Visual Hierarchy: Using black text selectively can help establish visual hierarchy and draw attention to important elements. Headings, subheadings, or call-to-action buttons can be highlighted effectively with black text.
+    Contrast and Impact: Black text on a light background creates a strong contrast, making the text highly visible and legible. It ensures that essential information stands out and grabs users' attention.
 
   ## SEO 
    ### Keywords
@@ -115,14 +129,40 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
     ### View Products page 
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
+     Media | All media assets are displayed properly, have no pixelation or stretched images and is responsive on all devices. | PASS
+     Responsiveness | Check every element on-page for consistent scalability in mobile, tablet and desktop view.| PASS
+     Accessibility | Checked the accessibility of the page using lighthouse| PASS
+     Responsiveness | Checked elements for consistant scaleability | PASS.
+    
+    ### View Products Detail page 
+    TEST            | OUTCOME                          | PASS / FAIL  
+    --------------- | -------------------------------- | ---------------
+     Media | All media assets are displayed properly, have no pixelation or stretched images and is responsive on all devices. | PASS
+     Responsiveness | Check every element on-page for consistent scalability in mobile, tablet and desktop view.| PASS
+     Accessibility | Checked the accessibility of the page using lighthouse| PASS
+     Responsiveness | Checked elements for consistant scaleability | PASS.
+     Add to bag | Checked the correct item and correct quantity is added to the bag | PASS
+    
 
     ### View Shopping Bag page 
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
+    Media | All media assets are displayed properly, have no pixelation or stretched images and is responsive on all devices. | PASS
+    Responsiveness | Check every element on-page for consistent scalability in mobile, tablet and desktop view.| PASS
+    Accessibility | Checked the accessibility of the page using lighthouse| PASS
+    Responsiveness | Checked elements for consistant scaleability | PASS.
+    Add to checkout | Checked the correct item and the correct price is added to the checkout | PASS
+
 
     ### View Checkout page 
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
+    Media | All media assets are displayed properly, have no pixelation or stretched images and is responsive on all devices. | PASS
+    Responsiveness | Check every element on-page for consistent scalability in mobile, tablet and desktop view.| PASS
+    Accessibility | Checked the accessibility of the page using lighthouse| PASS
+    Responsiveness | Checked elements for consistant scaleability | PASS.
+    Checkout Form | Checked the form submits only when all required fields are filled out. | PASS
+
 
     ### Add Review page
     TEST            | OUTCOME                          | PASS / FAIL  
@@ -135,10 +175,19 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
     ### Edit Products page
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
+    Media | All media assets are displayed properly, have no pixelation or stretched images and is responsive on all devices. | PASS
+    Responsiveness | Check every element on-page for consistent scalability in mobile, tablet and desktop view.| PASS
+    Accessibility | Checked the accessibility of the page using lighthouse| PASS
+    Edit Products Form | Checked the form submits only when all required fields are filled out. | PASS
+    Logged in user | Checked the form can only be edited by the user who created the post. | PASS
 
     ### Delete Products page
     TEST            | OUTCOME                          | PASS / FAIL  
     --------------- | -------------------------------- | ---------------
+    Responsiveness | Check every element on-page for consistent scalability in mobile, tablet and desktop view.| PASS
+    Accessibility | Checked the accessibility of the page using lighthouse| PASS
+    Delete Products Form | Checked the form is succesfully deleted | PASS
+    Logged in user | Checked the form can only be deleted by the user who created the post. | PASS
 
 
     ### Register page
@@ -149,7 +198,6 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
     Accessibility | Checked the accessibility of the page using lighthouse| PASS
     Register form | Checked the form submits only when all required fields are filled out. | PASS
     Sign in link | Checked the sign-in link redirects to the sign-in page. | PASS
-
 
 
     ### Sign in Page
@@ -176,7 +224,7 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
      - The Python Code was validated using a ["Pep8 python checker"](https://pep8ci.herokuapp.com/#) from code institute.
       
   - ## Accessibility 
-    ![]()
+    ![A screenshot of my lighthouse score](/media/lighthouse.png)
 
     - The Lighthouse function in devtools was used to see if the font and the font colours used were easy to read and access. I can confirm that the page on my website passed. 
       
