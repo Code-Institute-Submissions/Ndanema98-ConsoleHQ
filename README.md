@@ -26,7 +26,7 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
    - to be able to sort out a specific category of console. So that I can sort the consoles in a specific category by name.
    - to be able to search for a console or game by name or description. So that I can find a specific console or game to purchase.
    - to be able to easily see what I have searched for and a number of results. So that I can quickly decide whether the console I want is available.
-   -  to be able to easily select the quantity of consoles or games when purchasing them. So that I can ensure I do not accidently select the wrong quantity.
+   - to be able to easily select the quantity of consoles or games when purchasing them. So that I can ensure I do not accidently select the wrong quantity.
    - to be able to view the consoles or games selected to be purchased in a bag. So that I can identify the total cost of the purchase and all items to be received.
    - to be able to adjust the quantity of each individual console or game in my bag. So that I can easily make changes to my purchase.
    - to be able to quickly identify deals and special offers. So that I can take advantage on special savings.
@@ -60,9 +60,9 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
    - Lastly, the UserProfile model maintains user-specific information such as default delivery details. It is linked to the built-in User model through a one-to-one relationship and includes fields for phone number, street addresses, town/city, county, postcode, and country.
 
    ### Wireframes
-   - ![A screenshot of my wireframe 1](/media/wireframe1.png)
-   - ![A screenshot of my wireframe 2](/media/wireframe2.png)
-   - ![A screenshot of my wireframe 3](/media/Wireframe3.png)
+   ![A screenshot of my wireframe 1](/media/wireframe1.png)
+   ![A screenshot of my wireframe 2](/media/wireframe2.png)
+   ![A screenshot of my wireframe 3](/media/Wireframe3.png)
 
    ### Colour Scheme
    - 
@@ -167,13 +167,13 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
      - The official ["W3C validator"](https://validator.w3.org/) was used to validate my HTML. 
      
    - ### CSS 
-     - The official ["W3C validator (Jigsaw)"](https://jigsaw.w3.org/css-validator/) was used to validate my CSS. No errors were found when my code was input.
+     - The official ["W3C validator (Jigsaw)"](https://jigsaw.w3.org/css-validator/) was used to validate my CSS. 
      
    - ### Javascript
      - The Javascript file was validated using ["JSHint"](https://jshint.com/) and no errors were found. The New JavaScript features (ES6) option was ticked in the Configure menu.
    
    - ### Python
-     - The Python Code was validated using a ["Pep8 python checker"](https://pep8ci.herokuapp.com/#) from code institute and no errors were returned. 
+     - The Python Code was validated using a ["Pep8 python checker"](https://pep8ci.herokuapp.com/#) from code institute.
       
   - ## Accessibility 
     ![]()
