@@ -90,8 +90,58 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
 
    - This website changes it's layout to best display the content depending on the screen size. This allows the user to use the website on various different devices. 
  
- 
 
+
+ - ## NavBar 
+  - ###  Logged Out User
+   ![A screenshot of my Navigation bar(logged out)](/)
+
+    - This shows my navigation bar when a user is not logged in. A user is able to click on the website name which would redirect them back to the homepage. There is a search bar which would redirect users to a filtered view of the products depending on the specific requirements. There is a 'my account' button which allows you to log in or register for an account if you do not have one. Users are also able to click the shopping bag which would allow them to manage the contents in their bag. There are also further filters which allows the user to filter by specific categories such as manufactors or special deals. 
+
+  - ### Logged In User
+   ![A screenshot of my Navigation bar(logged in)](/)
+
+    - The main differnce is that when the 'my account' button is clicked, the user has the option to see their profile. However if the user is a super user thenn they also have the option to add products on the website. There is also the option of a logged in user to log out of their accoount.
+
+  - ## HomePage 
+   ![A screenshot of my HomePage](/)
+
+    - This shows the homepage of the website. There is a button which labelled 'shop now' which redirects users to a view of all the products available. 
+
+  - ## Products view page  
+   ![A screenshot of my Products view page 1](/)
+   ![A screenshot of my Products View page 2](/)
+
+   - This shows all the products available to purchase. It displays the products name, description, image, rating and price/discounted price.
+ 
+   ![A screenshot of edit/delete buttons](/)
+
+   - When a super user is logged in they have the option to edit and delete the products they have added on to the website. 
+
+   - ## Review section 
+
+   ![A screenshot of review section](/)
+
+   - This shows the reviews for the specific product selected. It shows the date when the review was created, the name of the user who created the review and the actual review itself.
+
+   ![A screenshot of add review button](/)
+
+   - When the user is logged in, a button whcih allows them to add a review is displayed. When clicked the button redirects users to the add review form. 
+
+   ![A screenshot of add review form](/)
+
+
+
+
+
+
+
+
+
+  
+   
+
+ 
 
  # Possible Future Features
    -  

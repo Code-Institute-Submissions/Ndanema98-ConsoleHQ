@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block content %}
+<div class="overlay"></div>
   <form method="POST">
     {% csrf_token %}
     {{ reviewform.as_p }}
