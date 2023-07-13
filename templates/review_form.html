@@ -10,11 +10,15 @@
 
 {% block content %}
 <div class="overlay"></div>
-  <h2>Add Review for "{{ product.name }}"</h2>
-  <form method="POST">
-    {% csrf_token %}
-    {{ reviewform.as_p }}
-    <input type="hidden" name="product_id" value="{{ product.id }}">
-    <button type="submit" class="btn btn-black rounded-0 text-uppercase mt-5">Save</button>
-  </form>
-{% endblock %} 
+  <div class="container text-center"> <!-- Add container and text-center classes -->
+    <h2>Add Review for "{{ product.name }}"</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <div class="text-center"> <!-- Add text-center class -->
+        {{ reviewform.as_p }}
+      </div>
+      <input type="hidden" name="product_id" value="{{ product.id }}">
+      <button type="submit" class="btn btn-black rounded-0 text-uppercase mt-5">Save</button>
+    </form>
+  </div>
+{% endblock %}

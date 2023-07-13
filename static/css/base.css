@@ -254,8 +254,11 @@ input[name='q']::placeholder {
 }
 /* Review Form */
 .review-form {
-    max-width: 400px;
+    display: block;
     margin: 0 auto;
+    max-width: 30rem;
+    border-radius: 0.5rem;
+    color: #fff;
   }
   
   .review-form h2 {
