@@ -90,58 +90,125 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
 
    - This website changes it's layout to best display the content depending on the screen size. This allows the user to use the website on various different devices. 
  
-
-
  - ## NavBar 
-  - ###  Logged Out User
-   ![A screenshot of my Navigation bar(logged out)](/)
+   - ###  Logged Out User
+   ![A screenshot of my Navigation bar(logged out)](/media/loggedout_navbar.png)
 
     - This shows my navigation bar when a user is not logged in. A user is able to click on the website name which would redirect them back to the homepage. There is a search bar which would redirect users to a filtered view of the products depending on the specific requirements. There is a 'my account' button which allows you to log in or register for an account if you do not have one. Users are also able to click the shopping bag which would allow them to manage the contents in their bag. There are also further filters which allows the user to filter by specific categories such as manufactors or special deals. 
 
-  - ### Logged In User
-   ![A screenshot of my Navigation bar(logged in)](/)
+   - ### Logged In User
+   ![A screenshot of my Navigation bar(logged in)](/media/loggedin_navbar.png)
 
     - The main differnce is that when the 'my account' button is clicked, the user has the option to see their profile. However if the user is a super user thenn they also have the option to add products on the website. There is also the option of a logged in user to log out of their accoount.
 
   - ## HomePage 
-   ![A screenshot of my HomePage](/)
+   ![A screenshot of my HomePage](/media/homepage.png)
 
     - This shows the homepage of the website. There is a button which labelled 'shop now' which redirects users to a view of all the products available. 
 
   - ## Products view page  
-   ![A screenshot of my Products view page 1](/)
-   ![A screenshot of my Products View page 2](/)
+   ![A screenshot of my Products view page 1](/media/products_view1.png)
+   ![A screenshot of my Products View page 2](/media/products_view2.png)
 
    - This shows all the products available to purchase. It displays the products name, description, image, rating and price/discounted price.
  
-   ![A screenshot of edit/delete buttons](/)
+   ![A screenshot of edit/delete buttons](/media/edit_delete.png)
 
    - When a super user is logged in they have the option to edit and delete the products they have added on to the website. 
 
-   - ## Review section 
+   - ### Discounted products 
+   ![A screenshot of my discounts admin](/media/discounts_admin.png)
+   ![A screenshot of my discounts view](/media/discounted_view.png)
+   
+   - Certain categories of products have a discount applied on to them. A super user can add and ammend these discounts in the admin panel. When a product has a discount applied they are displayed in the special deals category in the navbar. The products originsl price and discounted price are both on display. 
 
-   ![A screenshot of review section](/)
+  - ## Products detail page
+   ![A screenshot of my Products detail page 1](media/product_detail1.png)
+   ![A screenshot of my Products detail page 2](media/product_detail2.png)  
+
+   - This shows the view of when an indivdual product is selected. Users are able to see details of the product like the name, description, price, and image. Users are also able to select the quantity they require of the product and add it to their basket. 
+
+  - ## Review section 
+
+   ![A screenshot of review section](/media/review_section.png)
 
    - This shows the reviews for the specific product selected. It shows the date when the review was created, the name of the user who created the review and the actual review itself.
 
-   ![A screenshot of add review button](/)
+   ![A screenshot of add review button](/media/review_button.png)
 
    - When the user is logged in, a button whcih allows them to add a review is displayed. When clicked the button redirects users to the add review form. 
 
-   ![A screenshot of add review form](/)
+   ![A screenshot of add review form](/media/review_form.png)
 
+   - This form allows users to input their name and their review of the specific product. 
 
+   ![A screenshot of the save button](/media/save_button.png)
 
+   - This allows users to save their reviews to the database. 
 
+  - ## Shopping bag section 
+   ![A screenshot of a empty shopping bag](/media/empty_shoppingbag.png)
 
+   - This shows the user that their bag is empty and gives them the option to keep shopping. 
 
+   ![A screenshot of shopping bag](/media/shoppingbag1.png)
+   ![A screenshot of shopping bag](/media/shoppingbag2.png)
 
+   - This shows the user details of what they have in their shopping bag. These details include the prodcuts name, sku, image and price. Users also have the ability to update the quantity of the item or remove the item from the shopping bag completely. The bag total and delivery total is also displayed on the page. Additionally the user has the choice of continuing to shop or advancing to the secure checkout. 
 
+  - ## Checkout section
+   ![A screenshot of checkout 1](/media/checkout1.png)
+   ![A screenshot of checkout 2](/media/checkout2.png)
+   ![A screenshot of checkout 3](/media/checkout3.png)
 
-  
-   
+   - This shows the section where users can input their personal details to purchase a product. These details include the suers full name, address for delivery and payment information. If the user has a valid coupon they can also input it here for a 20% discount off the total price. There is also an order summary so users can be confident in exactly what they are purchasing. An adjust bag button is also avaliable incase users what to ammend their shopping bags, howveer if they do not they can just click the complete order button. 
 
- 
+  - ## Confirmation section
+   ![A screenshot of confirmation receipt 1](/media/confirmation1.png)
+   ![A screenshot of confirmation receipt 2](/media/confirmation2.png)
+
+   - This shows the user a receipt of their order. The recipt shows details of the order, the address the order is being sent to, and the billing information. 
+
+  - ## Product management section
+   ![A screenshot of product management 1](/media/product_management1.png)
+   ![A screenshot of product management 2](/media/product_management2.png)
+   ![A screenshot of product management 3](/media/product_management3.png)
+
+   - A super user is able to add a new product on to the website through this form. 
+
+  - ## Profile section
+   ![A screenshot of profile 1](/media/profile1.png)
+   ![A screenshot of profile 2](/media/profile2.png)
+
+   - This shows the details of the logged in user and any transactions they have made previously. The order numbber, order name, order total, and date the order was placed is displayed on this page. 
+
+  - ## Footer
+   ![A screenshot of my footer](/media/footer.png)
+   - This shows the footer elements. Users are able to click on the facebook link to be redirected to the websites facebook page, if they wanted to learn more about the website. Users are also able to sign up to a newsletter. When its a users fist time signing up to the newsletter, a coupon code is generated for them which when used gives the user a 20% discount. 
+
+   - ### Coupon
+   ![A screenshot of my coupon admin](/media/coupon.png)
+
+   - To view the coupon generated users would need access to the admin panel. 
+
+   - ### Facebook page 
+   ![A screenshot of my facebook page 1 ](/media/facebook1.png)
+   ![A screenshot of my facebook page 2 ](/media/facebook2.png)
+
+   - This shows the Facebook page created for this website incase users want more information. 
+
+  - ## UserInterface
+   - ### Sign in Page
+   ![A screenshot of my sign in page](/media/sign_in.png)
+   - This shows the form used for a user to sign into their account 
+
+   - ### Sign up Page
+   ![A screenshot of my sign up page](/media/sign_up.png)
+   - This shows the form used for a user to sign up for a new account 
+
+   - ### Sign out Page
+   ![A screenshot of my sign out page](/media/sign_out.png)
+   - This shows the form used for a user to sign out of their accounts.
 
  # Possible Future Features
    -  
