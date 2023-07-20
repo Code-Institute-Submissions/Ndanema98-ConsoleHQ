@@ -15,7 +15,7 @@ def bag_contents(request):
     for item_id, quantity in bag.items():
         product = get_object_or_404(Product, pk=item_id)
         if product.get_discounted_price():
-            total += quantity * int(product.get_discounted_price())
+            total += quantity * float(product.get_discounted_price())
         else:
             total += quantity * product.price
         product_count += quantity
@@ -35,13 +35,16 @@ def bag_contents(request):
     grand_total = delivery + total
 
     news_letter_sub = None
-    if not isinstance(request.user, AnonymousUser):
+    if request.user.is_authenticated:
         news_letter_sub = NewsletterSubscription.objects.filter(
             Q(user=request.user) & Q(subscribed=True) & Q(coupon_used=False)).last()
+        print("Newsletter Subscription:", news_letter_sub)
+        discount_price = 0  
         if news_letter_sub:
             discount_price = (int(grand_total) * 20) / 100
             grand_total = int(grand_total) - int(discount_price)
- 
+            print("Discounted Price:", discount_price)
+
     context = {
         'bag_items': bag_items,
         'total': total,

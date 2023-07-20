@@ -67,6 +67,7 @@
                                     <th scope="col">Product Info:</th>
                                     <th scope="col"></th>
                                     <th scope="col">Price</th>
+                                    <th scope="col">Discounted Price</th> <!-- New Column for Discounted Price -->
                                     <th scope="col">Qty</th>
                                     <th scope="col">Subtotal</th>
                                 </tr>
@@ -83,15 +84,22 @@
                                     <td class="py-3">
                                         <p class="my-0 text-white">£{{ item.product.price }}</p>
                                     </td>
+                                    <td class="py-3 my-0 text-white" >
+                                        {% if item.product.get_discounted_price %}
+                                            £{{ item.product.get_discounted_price | calc_subtotal:item.quantity }}
+                                        {% else %}
+                                            N/A <!-- If no discounted price, display N/A or any other message you prefer -->
+                                        {% endif %}
+                                    </td>
                                     <td class="py-3 w-25">
                                         {% include "bag/quantity-form.html" %}
                                     </td>
                                     <td class="py-3 text-white">
                                         <p class="my-0">
                                             {% if item.product.get_discounted_price %}
-                                            £{{ item.product.get_discounted_price | calc_subtotal:item.quantity }}
+                                                £{{ item.product.get_discounted_price | calc_subtotal:item.quantity }}
                                             {% else %}
-                                            £{{ item.product.price | calc_subtotal:item.quantity }}
+                                                £{{ item.product.price | calc_subtotal:item.quantity }}
                                             {% endif %}
                                         </p>
                                     </td>
@@ -169,3 +177,4 @@
 </script>
 {% include 'products/includes/quantity_input_script.html' %}
 {% endblock %}
+
