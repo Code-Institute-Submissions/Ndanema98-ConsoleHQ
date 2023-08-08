@@ -184,14 +184,15 @@ def checkout_success(request, order_number):
 
 
 def coupon_validation(request):
-    print("POST :", request.GET)
     code = request.GET.get("coupon")
     coupon_obj = Coupon.objects.filter(discount_code=code, used=False).first()
-    if coupon_obj:
+    if coupon_obj and coupon_obj.user == request.user:
         coupon_obj.used = True
         coupon_obj.save()
+        request.session['applied_coupon'] = coupon_obj.id
         message = "Coupon is applied successfully!"
+        return JsonResponse({"message": message}, status=200)
     else:
-        message = "Coupon is not valid!"
-    return JsonResponse({"message": message}, safe=False, status=200)
+        message = "Coupon is not valid for the current user!"
+        return JsonResponse({"message": message}, status=400)
 

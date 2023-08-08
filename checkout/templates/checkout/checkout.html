@@ -165,25 +165,30 @@
     {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
     <script>
-        var validate_btn = document.getElementById("validate_btn")
+        var validate_btn = document.getElementById("validate_btn");
         validate_btn.addEventListener("click", () => {
-        var coupon_input = document.getElementById("coupon")
-        console.log("done")
-        $.ajax({
-            url: `/checkout/coupon_validation/?coupon=${coupon_input.value}`,
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                // Handle the successful response
-                console.log(response);
-                var msg = document.getElementById("coupon_msg")
-                msg.innerHTML = response.message
-            },
-            error: function(error) {
-                // Handle the error
-                console.log(error);
-            }
+            var coupon_input = document.getElementById("coupon");
+            $.ajax({
+                url: `/checkout/coupon_validation/?coupon=${coupon_input.value}`,
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    // Handle the successful response
+                    console.log(response);
+                    var msg = document.getElementById("coupon_msg");
+                    msg.innerHTML = response.message;
+                    
+                    // Reload the page after successful validation
+                    if (response.message === "Coupon is applied successfully!") {
+                        location.reload(); 
+                    }
+                },
+                error: function(error) {
+                    // Handle the error
+                    console.log(error);
+                }
+            });
         });
-    })
     </script>
+    
 {% endblock %}
