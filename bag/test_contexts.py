@@ -38,7 +38,8 @@ class BagContentsTestCase(TestCase):
         self.assertEqual(context['free_delivery_delta'], Decimal(
             settings.FREE_DELIVERY_THRESHOLD) - 95)
         self.assertEqual(
-            context['free_delivery_threshold'], settings.FREE_DELIVERY_THRESHOLD)
+            context[
+                'free_delivery_threshold'], settings.FREE_DELIVERY_THRESHOLD)
         self.assertEqual(context['grand_total'], 95)
 
     def test_bag_contents_with_discount(self):
@@ -49,5 +50,5 @@ class BagContentsTestCase(TestCase):
             user=self.user, subscribed=True, coupon_used=False)
         context = bag_contents(request)
 
-        self.assertEqual(context['total'], 15)  # 1 * 15 (discounted price)
-        self.assertEqual(context['grand_total'], 12)  # 15 - (15 * 0.2) (discount applied)
+        self.assertEqual(context['total'], 15)
+        self.assertEqual(context['grand_total'], 12)

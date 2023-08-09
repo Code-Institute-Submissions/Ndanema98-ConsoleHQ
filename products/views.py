@@ -36,9 +36,9 @@ def all_products(request):
                 messages.error(request, "You have not entered anything!")
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = Q(name__icontains=query) | Q(
+                description__icontains=query)
             products = products.filter(queries)
-        
     context = {
         'products': products,
         'search_term': query,
@@ -92,10 +92,13 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to add product. Please ensure the form is valid.'
+            ),
+
     else:
         form = ProductForm()
-        
     template = 'products/add_product.html'
     context = {
         'form': form,
@@ -120,7 +123,9 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to update product. Please ensure the form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -157,12 +162,9 @@ def create_review(request, product_id):
             review.author = request.user
             review.product = product
             print("PRODUCT: ", review.product)
-            review.save() 
+            review.save()
             print("REVIEW: ", review)
             return redirect('product_detail', product_id=product_id)
     return render(
-        request, 'review_form.html', {'reviewform': reviewform, 'product': product})
-
-
-
-    
+        request,
+        'review_form.html', {'reviewform': reviewform, 'product': product})

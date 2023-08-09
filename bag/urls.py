@@ -8,6 +8,7 @@ urlpatterns = [
     path(
         'remove/<item_id>/', views.delete_item_bag, name='delete_item_bag'),
     path(
-        'subscribe_to_newsletter/', views.subscribe_to_newsletter, name='subscribe_to_newsletter'),
+        'subscribe_to_newsletter/', views.subscribe_to_newsletter,
+        name='subscribe_to_newsletter'),
 
 ]

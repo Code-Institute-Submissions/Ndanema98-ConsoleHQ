@@ -5,7 +5,7 @@ from .forms import UserProfileForm
 class FormsTestCase(TestCase):
     def test_user_profile_form(self):
         form = UserProfileForm()
-        self.assertFalse(form.is_bound)  # Check if the form is unbound by default
+        self.assertFalse(form.is_bound)
 
         form_data = {
             'default_phone_number': '1234567890',
@@ -16,10 +16,11 @@ class FormsTestCase(TestCase):
             'default_county': 'Test County',
         }
         form = UserProfileForm(data=form_data)
-        self.assertTrue(form.is_bound)  # Check if the form is bound after providing data
+        self.assertTrue(form.is_bound)
 
-        self.assertTrue(form.is_valid())  # Check if the form is valid
-        self.assertEqual(form.cleaned_data['default_phone_number'], '1234567890')  # Check cleaned data
+        self.assertTrue(form.is_valid())
+        self.assertEqual(
+            form.cleaned_data['default_phone_number'], '1234567890')
 
         form_empty_data = {
             'default_phone_number': '',
@@ -30,7 +31,6 @@ class FormsTestCase(TestCase):
             'default_county': '',
         }
         form = UserProfileForm(data=form_empty_data)
-        self.assertFalse(form.is_valid())  # Check if the form is invalid when required fields are empty
+        self.assertFalse(form.is_valid())
 
-        self.assertIn('default_phone_number', form.errors)  # Check for specific form errors
-
+        self.assertIn('default_phone_number', form.errors)

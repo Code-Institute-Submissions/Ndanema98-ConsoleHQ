@@ -10,7 +10,8 @@ class CheckoutViewTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = User.objects.create_user(
-            username='testuser', email='testuser@example.com', password='testpassword'
+            username='testuser',
+            email='testuser@example.com', password='testpassword'
         )
 
     def test_checkout_view_get(self):
@@ -22,7 +23,8 @@ class CheckoutViewTest(TestCase):
 
     def test_checkout_view_post_valid_form(self):
         self.client.login(username='testuser', password='testpassword')
-        product = Product.objects.create(name='Test Product', price=Decimal('10.00'))
+        product = Product.objects.create(
+            name='Test Product', price=Decimal('10.00'))
         bag = {str(product.id): 2}
 
         self.client.session['bag'] = bag
@@ -41,16 +43,19 @@ class CheckoutViewTest(TestCase):
         })
 
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse('checkout_success', args=[Order.objects.first().order_number]))
+        self.assertRedirects(response, reverse(
+            'checkout_success', args=[Order.objects.first().order_number]))
 
     def test_checkout_view_post_invalid_form(self):
         self.client.login(username='testuser', password='testpassword')
         response = self.client.post(reverse('checkout'), {})
-        
+
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkout/checkout.html')
-        self.assertFormError(response, 'order_form', 'full_name', 'This field is required.')
-        self.assertFormError(response, 'order_form', 'email', 'This field is required.')
+        self.assertFormError(
+            response, 'order_form', 'full_name', 'This field is required.')
+        self.assertFormError(
+            response, 'order_form', 'email', 'This field is required.')
 
 
 class CheckoutSuccessViewTest(TestCase):
@@ -58,7 +63,8 @@ class CheckoutSuccessViewTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = User.objects.create_user(
-            username='testuser', email='testuser@example.com', password='testpassword'
+            username='testuser',
+            email='testuser@example.com', password='testpassword'
         )
 
     def test_checkout_success_view(self):
@@ -77,7 +83,8 @@ class CheckoutSuccessViewTest(TestCase):
             county='NY',
             grand_total=Decimal('55.00'),
         )
-        response = self.client.get(reverse('checkout_success', args=[order.order_number]))
+        response = self.client.get(reverse(
+            'checkout_success', args=[order.order_number]))
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkout/checkout_success.html')
@@ -91,15 +98,18 @@ class CouponValidationViewTest(TestCase):
         self.coupon = Coupon.objects.create(discount_code='TESTCODE')
 
     def test_coupon_validation_view_valid_coupon(self):
-        response = self.client.get(reverse('coupon_validation'), {'coupon': 'TESTCODE'})
+        response = self.client.get(
+            reverse('coupon_validation'), {'coupon': 'TESTCODE'})
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json()['message'], 'Coupon is applied successfully!')
+        self.assertEqual(
+            response.json()['message'], 'Coupon is applied successfully!')
         self.coupon.refresh_from_db()
         self.assertTrue(self.coupon.used)
 
     def test_coupon_validation_view_invalid_coupon(self):
-        response = self.client.get(reverse('coupon_validation'), {'coupon': 'INVALIDCODE'})
+        response = self.client.get(reverse(
+            'coupon_validation'), {'coupon': 'INVALIDCODE'})
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()['message'], 'Coupon is not valid!')
@@ -119,4 +129,3 @@ class CacheCheckoutDataViewTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content.decode(), '')
-

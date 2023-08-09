@@ -5,6 +5,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 from checkout.models import Order
 
+
 class ViewsTestCase(TestCase):
     def setUp(self):
         self.client = Client()
@@ -52,4 +53,3 @@ class ViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'checkout/checkout_success.html')
         self.assertEqual(response.context['order'], self.order)
-

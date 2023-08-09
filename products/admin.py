@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Product, Category, Review, Deals, NewsletterSubscription, Coupon
+from .models import (
+    Product, Category, Review, Deals, NewsletterSubscription, Coupon
+)
 from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.

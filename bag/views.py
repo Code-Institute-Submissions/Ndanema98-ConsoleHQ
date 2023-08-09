@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import (
+    render, redirect, reverse, HttpResponse, get_object_or_404
+)
 from django.contrib import messages
 from django.contrib.auth.models import AnonymousUser
 
@@ -13,7 +15,8 @@ def view_bag(request):
     if isinstance(request.user, AnonymousUser):
         newsletter_subscription = None
     else:
-        newsletter_subscription = NewsletterSubscription.objects.filter(user=request.user).first()
+        newsletter_subscription = NewsletterSubscription.objects.filter(
+            user=request.user).first()
 
     context = {
         'newsletter': newsletter_subscription
@@ -42,7 +45,8 @@ def add_to_bag(request, item_id):
 
 
 def adjust_bag(request, item_id):
-    """ Adjust the quantity of the specified product to the specified amount """
+    """ Adjust the quantity of the
+    specified product to the specified amount """
 
     product = get_object_or_404(Product, pk=item_id)
     bag = request.session.get('bag', {})
@@ -78,7 +82,8 @@ def delete_item_bag(request, item_id):
 def subscribe_to_newsletter(request):
     if request.user.is_authenticated:
 
-        object, created = NewsletterSubscription.objects.get_or_create(user=request.user)
+        object, created = NewsletterSubscription.objects.get_or_create(
+            user=request.user)
         checkbox = request.GET.get("newsletter")
         email = request.GET.get("email")
         if checkbox:

@@ -29,4 +29,3 @@ class FormsTestCase(TestCase):
         self.assertIn('town_or_city', form.errors)
         self.assertIn('street_address1', form.errors)
         self.assertIn('county', form.errors)
-

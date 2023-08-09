@@ -30,5 +30,3 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'console_hq.views.handler404'
-
-

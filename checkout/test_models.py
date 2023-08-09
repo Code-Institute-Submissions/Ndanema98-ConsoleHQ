@@ -9,7 +9,8 @@ class OrderModelTest(TestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(
-            username='testuser', email='testuser@example.com', password='testpassword'
+            username='testuser',
+            email='testuser@example.com', password='testpassword'
         )
 
     def test_order_creation(self):
@@ -53,8 +54,10 @@ class OrderModelTest(TestCase):
 
     def test_update_total(self):
         order = Order.objects.create(user_profile=self.user.userprofile)
-        product = Product.objects.create(name='Test Product', price=Decimal('10.00'))
-        line_item = OrderLineItem.objects.create(order=order, product=product, quantity=2)
+        product = Product.objects.create(
+            name='Test Product', price=Decimal('10.00'))
+        line_item = OrderLineItem.objects.create(
+            order=order, product=product, quantity=2)
 
         order.update_total()
         self.assertEqual(order.order_total, Decimal('20.00'))
@@ -66,10 +69,12 @@ class OrderLineItemModelTest(TestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(
-            username='testuser', email='testuser@example.com', password='testpassword'
+            username='testuser',
+            email='testuser@example.com', password='testpassword'
         )
         self.order = Order.objects.create(user_profile=self.user.userprofile)
-        self.product = Product.objects.create(name='Test Product', price=Decimal('10.00'))
+        self.product = Product.objects.create(
+            name='Test Product', price=Decimal('10.00'))
 
     def test_line_item_creation(self):
         line_item = OrderLineItem.objects.create(

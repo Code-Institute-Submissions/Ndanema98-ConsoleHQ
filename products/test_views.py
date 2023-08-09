@@ -85,7 +85,8 @@ class AddProductViewTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.url = reverse('add_product')
-        self.user = User.objects.create_superuser(username='admin', password='admin')
+        self.user = User.objects.create_superuser(
+            username='admin', password='admin')
         self.client.login(username='admin', password='admin')
 
     def test_add_product_view(self):
@@ -110,7 +111,8 @@ class EditProductViewTest(TestCase):
         )
         self.product.categories.add(self.category)
         self.url = reverse('edit_product', args=[self.product.id])
-        self.user = User.objects.create_superuser(username='admin', password='admin')
+        self.user = User.objects.create_superuser(
+            username='admin', password='admin')
         self.client.login(username='admin', password='admin')
 
     def test_edit_product_view(self):
@@ -140,7 +142,8 @@ class DeleteProductViewTest(TestCase):
         )
         self.product.categories.add(self.category)
         self.url = reverse('delete_product', args=[self.product.id])
-        self.user = User.objects.create_superuser(username='admin', password='admin')
+        self.user = User.objects.create_superuser(
+            username='admin', password='admin')
         self.client.login(username='admin', password='admin')
 
     def test_delete_product_view(self):
@@ -164,7 +167,8 @@ class CreateReviewViewTest(TestCase):
         )
         self.product.categories.add(self.category)
         self.url = reverse('create_review', args=[self.product.id])
-        self.user = User.objects.create_user(username='user', password='password')
+        self.user = User.objects.create_user(
+            username='user', password='password')
         self.client.login(username='user', password='password')
 
     def test_create_review_view(self):
@@ -182,7 +186,8 @@ class NewsletterSignupViewTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.url = reverse('newsletter_signup')
-        self.user = User.objects.create_user(username='user', password='password')
+        self.user = User.objects.create_user(
+            username='user', password='password')
         self.client.login(username='user', password='password')
 
     def test_newsletter_signup_view(self):
@@ -196,7 +201,8 @@ class NewsletterSignupViewTest(TestCase):
         self.assertRedirects(response, reverse('newsletter_success'))
 
     def test_newsletter_signup_view_post_existing_subscription(self):
-        subscription = NewsletterSubscription.objects.create(user=self.user, subscribed=True)
+        subscription = NewsletterSubscription.objects.create(
+            user=self.user, subscribed=True)
         response = self.client.post(self.url, {'email': 'test@example.com'})
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('newsletter_success'))

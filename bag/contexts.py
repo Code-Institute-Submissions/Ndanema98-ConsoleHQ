@@ -16,7 +16,8 @@ def bag_contents(request):
     for item_id, quantity in bag.items():
         product = get_object_or_404(Product, pk=item_id)
         if product.get_discounted_price():
-            total += Decimal(product.get_discounted_price()) * Decimal(quantity)
+            total += Decimal(product.get_discounted_price()) * Decimal(
+                quantity)
         else:
             total += product.price * Decimal(quantity)
         product_count += quantity

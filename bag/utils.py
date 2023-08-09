@@ -12,13 +12,15 @@ def send_subscription_email(user):
         # discount_amount = 0
     )
     subject = "Subscribed to Newsletter"
-    body = f"You are successfully subscribed to the newletter.You can use {coupon.discount_code} for the avaliable 20% discount."
+    body = f"You are successfully subscribed to the newletter."
+    f"You can use {Coupon.objects.first().discount_code} "
+    f"for the available 20% discount."
     send_mail(
         subject,
         body,
         settings.DEFAULT_FROM_EMAIL,
         [user.email]
-    ) 
+    )
 
 
 def generate_coupon_code(length=8):
