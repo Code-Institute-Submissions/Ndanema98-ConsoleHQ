@@ -62,6 +62,9 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
 
    - Lastly, the UserProfile model maintains user-specific information such as default delivery details. It is linked to the built-in User model through a one-to-one relationship and includes fields for phone number, street addresses, town/city, county, postcode, and country.
 
+   ### Data Model Diagram 
+   ![A screenshot of my data model diagram](/media/data_model_diagram.png)
+
    ### Wireframes
    ![A screenshot of my wireframe 1](/media/wireframe1.png)
    ![A screenshot of my wireframe 2](/media/wireframe2.png)
