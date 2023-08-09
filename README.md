@@ -220,7 +220,7 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
     
  # Testing 
  - ## Automated 
-  - I have created some python files which automatically test my models.py, my forms.py, my views.py, my contexts.py and my utils.py in my different applications. 
+  - I have created some python files which automatically test my models.py, my forms.py, my views.py, my contexts.py and my utils.py in my different applications. These tests examine various aspects of the application, including user profiles, products, reviews, newsletters, and orders. They observe how the application responds to different scenarios, like user interactions and data inputs. These tests are crucial for making sure the app works correctly and doesn't have problems. By mimicking how users would interact with the app, these tests catch and fix any potential problems early on. This approach makes the app stronger and more dependable. 
 
  - ## Manual 
    - This website has been tested using three different browsers (Google Chrome, Firefox, Safari) and I can confirm that it works. 
@@ -392,7 +392,7 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
 
  - ## Code
    
-   - 
+   - The code for my structure was taken from the [Boutique Ado Walkthrough](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+EA101+2021_T1/courseware/eb05f06e62c64ac89823cc956fcd8191/3adff2bf4a78469db72c5330b1afa836/), the [Introduction to Search Engine Optimization Walkthrough](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+SEO101+2021_T1/courseware/8602519909ff453c8d6e03d3169f92ac/213de39016ca41fdb2b93aa2e0283c51/), and the [Web Marketing Walkthrough](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+DRWM101+2021_T1/courseware/2b2a6057abf44272955637c09687ab43/acc4b7d56e3a400ebe110e5d734ce767/).
     
  # Acknowledgement 
     - The online tutors that Code Institute provides. 

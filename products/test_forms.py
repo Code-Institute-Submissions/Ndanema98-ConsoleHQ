@@ -46,4 +46,4 @@ class NewsletterSignupFormTest(TestCase):
     def test_newsletter_signup_form_invalid(self):
         form = NewsletterSignupForm(data={})
         self.assertFalse(form.is_valid())
-        self.assertEqual(len(form.errors), 1)  # Expecting error for 'email'
+        self.assertEqual(len(form.errors), 1)
