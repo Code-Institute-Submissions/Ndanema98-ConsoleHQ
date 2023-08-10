@@ -279,9 +279,9 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
    - This shows the form used for a user to sign out of their accounts.
 
  # Possible Future Features
-   -  
-   - 
-   -  
+   - Users being able to leave a numerical rating on products 
+   - Users being able to create wishlists of products they're interested in and compare different products side by side.
+   - Offer real-time customer support through a live chat feature, allowing users to ask questions and get assistance while browsing the site.
     
  # Testing 
  - ## Automated 
@@ -412,7 +412,18 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
     ![A screenshot of my lighthouse score](/media/lighthouse.png)
 
     - The Lighthouse function in devtools was used to see if the font and the font colours used were easy to read and access. I can confirm that the page on my website passed. 
-      
+
+ - ## Bugs 
+   - ### Unresolved bugs 
+     - An unresolved bug in my code, is the validation in the HTML as it was throwing up errors to do with the 'li' element which I used. 
+     - Discounted categories can only be discounted by < 10%. It will not allow you to give a discount over 10% to a category. 
+
+   - ### Resolved Bugs 
+    - Coupon validation was not updating the total in basket. 
+    - The quantity bar was not increasing/decreasing in numerical order. 
+    - Free delivery functionality. 
+    - Newsletter sign up and coupon generation 
+
  # Languages used 
    - HTML
    - CSS
