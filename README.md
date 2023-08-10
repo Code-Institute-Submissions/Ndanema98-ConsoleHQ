@@ -438,15 +438,33 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
      - Allowed me to validate my Javascript code against industry standard.
 
  # Deployment
-  - This code was deployed using Code Institute's mock terminal for Heroku. 
+  - This project's deployment was facilitated through a combination of local development using GitHub and Heroku, along with essential configurations for AWS S3 and Stripe integration.
 
-  - ## Steps for deployment:
-   1. In the top right corner of the page click on the fork button. 
-   2. The next page will show a forked version of my project.
-   3. Create a new Heroku app.
-   4. Set the buildbacks to Python and NodeJS in that order.
-   5. Link the Heroku app to the repository. 
-   6. Click on deploy. 
+  - ## Local Development and GitHub:
+   1. Navigate to the repository on GitHub.
+   2. In the top right corner of the repository page, locate and click on the "Fork" button. This action will create a forked version of the project under your GitHub account.
+   3. Clone the forked repository to your local development environment using Git commands or GitHub Desktop.
+   
+  - ## Heroku App Creation:
+   1. To deploy the project, first, create a new Heroku app through your Heroku account.
+   2. Once the app is created, access the app's settings in your Heroku dashboard.
+   3. Under the "Buildpacks" section, set the buildpacks in the following order: "Python" and "NodeJS." This ensures compatibility for both the backend (Python) and frontend (NodeJS) of the application.
+   4. Link the Heroku app to the cloned repository on GitHub by connecting to the appropriate repository.
+
+  - ## AWS S3 Bucket Creation:
+   1. As part of the project's deployment, an AWS S3 bucket was set up to handle media file storage.
+   2. Create a new AWS S3 bucket using the AWS Management Console.
+   3. Configure the bucket's settings to allow public access to static files while maintaining the necessary privacy for sensitive data.
+
+  - ## Stripe Configuration:
+   1. The project utilizes Stripe for secure payment processing.
+   2. In your Stripe account, set up the necessary products, prices, and webhook endpoints.
+   3. Configure the project's settings to include your Stripe publishable key and secret key, ensuring a secure connection for payment transactions.
+
+  - ## Final Deployment:
+   1. With all configurations in place, return to your Heroku dashboard and click on the "Deploy" button.
+   2. Choose the appropriate deployment method (GitHub in this case) and specify the branch to deploy (e.g., "main").
+   3. Trigger the deployment by clicking on the "Deploy Branch" button.
 
  # Credits
  - ## Images
