@@ -127,6 +127,31 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
     1. **Featured Categories:** Highlight a few featured categories to entice users to explore.
     2. **Search Bar and Filters:** Make sure my search bar and filters are easily accessible so users can find specific products they're interested in.
 
+  ## Marketing 
+
+    **Who Are Your Users?**
+    My website is B2C focused therefore my users are gamers of all ages and interests who are looking for a variety of consoles, and games. This could include casual gamers, hardcore enthusiasts, and gift shoppers.
+
+    **Online Platforms:**
+    1. **E-commerce Website:** Optimise my website for search engines (SEO) to capture organic traffic.
+    2. **Social Media Platforms:** Utilise platforms like Facebook to reach a wide range of gamers.
+    
+    **Meeting User Needs:**
+    Create engaging and informative content related to gaming, product reviews. Deliver this content through blog posts, and social media updates.
+
+    **Sales and Discounts:**
+    Promote special offers and discounts through various channels, such as email newsletters, website banners, and social media posts.
+
+    **Business Goals:**
+    1. **Increase Sales:** Use targeted online advertising to attract potential customers and drive sales.
+    2. **Brand Awareness:** Invest in social media marketing and influencer partnerships to expand my brand's reach.
+
+    **Budget Consideration:**
+    Since Console HQ is an ecommerce business, allocating a budget for marketing would be beneficial. However, I can also leverage low-cost or free options, such as content creation and organic social media engagement.
+
+    **Research and Benchmarking:**
+    Look at successful ecommerce businesses in the gaming industry to see what marketing practices they employ. Study their strategies and adapt them to my brand's unique selling proposition.
+
  # Features
  - ## Responsive Website
    ![A screenshot of my responsive design](/media/amiresponsive2.jpg)
