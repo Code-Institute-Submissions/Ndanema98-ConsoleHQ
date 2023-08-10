@@ -101,11 +101,31 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
       - Where to buy retro video games
       - Buy PlayStation 5 online
 
-    ### Content 
-    
+   ### Content 
+    I am going to focus on the Home Page of my ecommerce website. The home page is typically the first page users land on when visiting a website, and it plays a crucial role in providing an overview of what i have to offer and guiding users to relevant sections of my website. 
 
+    **What Do Your Users Need?**
+    My users visiting the home page need a quick and clear understanding of what my website offers: consoles and games for purchase. They also need easy navigation to explore different categories and products.
 
-   
+    **What Information and Features Can You Provide?**
+    1. **Search Bar:** Allow users to search for specific products directly from the home page.
+    2. **Categories:** Showcase major categories of consoles and games (e.g., PlayStation, Xbox, Nintendo) to help users quickly find what they're interested in.
+    3. **Deals and Discounts:** Highlight ongoing deals or discounts to attract users looking for savings.
+
+    **Making Information Easy to Understand:**
+    Use clear and concise language in my product descriptions and headings. Organize content using headings, subheadings, and bullet points for easy scanning.
+
+    **Demonstrate Expertise, Authoritativeness, and Trustworthiness:**
+    1. **Quality Images:** Use high-quality images of products to show professionalism and give users a clear view of what they can purchase.
+    2. **Contact Information:** Provide visible contact information to show I am reachable and transparent.
+  
+    **Internal and External Linking:**
+    1. **Internal Links:** Link to specific product categories or featured products, allowing users to dive deeper into relevant sections of your site.
+    2. **External Links:** Consider linking to the official websites social media page to enhance credibility.
+
+    **Helping Users Discover Relevant Parts:**
+    1. **Featured Categories:** Highlight a few featured categories to entice users to explore.
+    2. **Search Bar and Filters:** Make sure my search bar and filters are easily accessible so users can find specific products they're interested in.
 
  # Features
  - ## Responsive Website
