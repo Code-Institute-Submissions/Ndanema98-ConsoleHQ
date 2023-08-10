@@ -86,6 +86,26 @@ This website was built using knowledge gained from HTML, CSS, JavaScript, Python
 
   ## SEO 
    ### Keywords
+      - Consoles
+      - Gaming
+      - Cheap Nintendo Switch console
+      - Online Store
+      - Buy Games
+      - Buy PlayStation 5 online
+      - Game Consoles
+      - Video Games
+      - Best Xbox games for sale
+      - Game Deals
+      - Affordable gaming consoles online
+      - Console Shop
+      - Where to buy retro video games
+      - Buy PlayStation 5 online
+
+    ### Content 
+    
+
+
+   
 
  # Features
  - ## Responsive Website

@@ -12,18 +12,23 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 logo-font text-white">
-                The new Consoles are here
-                </h1>
-                <div class="my-5">
-                    <h4>
-                        <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
-                    </h4>
+<div class="container h-100">
+    <div class="row h-100">
+        <div class="col-12 col-md-8 my-auto order-2 order-md-1">
+            <p class="text-right text-white"> <!-- Apply dark blue color using the class -->
+                Welcome to Console HQ, your ultimate destination for gaming enthusiasts! Explore a world of endless possibilities with our wide selection of consoles and games. Whether you're on the hunt for the latest PlayStation 5, seeking the best Xbox games, or looking for family-friendly options like the Nintendo Switch, we've got you covered. Our online store is a haven for gamers, offering a collection of products that cater to your unique gaming needs. Discover exclusive deals and discounts that will make your gaming experience even more exciting. Read reviews from fellow gamers who have experienced the quality and excellence of our products. At Console HQ, we understand the thrill of gaming, and our mission is to provide you with a seamless shopping experience that reflects our expertise, trustworthiness, and dedication to the gaming community. Start your gaming journey today and let us be your partner in unlocking the next level of fun and excitement.
+            </p>
+        </div>
+        <div class="col-12 col-md-4 my-auto order-1 order-md-2">
+            <div class="my-5">
+                <h2 class="text-left mb-4 text-white">The Consoles Are Here</h2> <!-- Apply dark blue color using the class -->
+                <h4 class="text-left">
+                    <a href="{% url 'products' %}" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
+                </h4>
                 </div>
             </div>
+        </div>
+        
         </div>
     </div>
 {% endblock %}
