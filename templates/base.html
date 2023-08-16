@@ -36,9 +36,6 @@
 
 
     {% block corejs %}
-    <script>
-        console.log("scripts loading")
-    </script>
     <script src="https://kit.fontawesome.com/003059f006.js" crossorigin="anonymous"></script>
 
     <!-- Stripe -->
@@ -270,10 +267,8 @@
     var news_letter = document.getElementById("news_letter")
     var subscribe_form = document.getElementById("mc-embedded-subscribe-form")
     var email = document.getElementById("mce-EMAIL").value
-    console.log("news_letter:", news_letter)
     subscribe_form.addEventListener('submit', () => {
         if (news_letter.checked) {
-            console.log('Checkbox is checked');
             var checked = true
             $.ajax({
                 url: `/bag/subscribe_to_newsletter/?newsletter=${checked}`,
@@ -281,8 +276,6 @@
                 dataType: 'json',
                 success: function (response) {
                     // Handle the successful response
-                    console.log(response);
-                    console.log('hi')
                     var message = document.getElementById("subscription_message")
                     message.innerHTML = response.message
                 },

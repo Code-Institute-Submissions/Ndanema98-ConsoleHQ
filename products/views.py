@@ -161,9 +161,7 @@ def create_review(request, product_id):
             review = reviewform.save(commit=False)
             review.author = request.user
             review.product = product
-            print("PRODUCT: ", review.product)
             review.save()
-            print("REVIEW: ", review)
             return redirect('product_detail', product_id=product_id)
     return render(
         request,

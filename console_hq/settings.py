@@ -28,7 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     'consolehq.herokuapp.com', 'localhost',
-    '8000-ndanema98-consolehq-3xmxl6l67i1.ws-eu102.gitpod.io',]
+    '8000-ndanema98-consolehq-lpjkh98zf6s.ws-eu103.gitpod.io',]
 
 
 # Application definition
